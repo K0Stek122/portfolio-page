@@ -10,13 +10,14 @@ Kamil Kostrzewa's personal portfolio/blog site — a static single-page React ap
 
 ```bash
 npm install       # install deps (README says `npm install -D`; either works)
-npm run dev       # start Vite dev server
 npm run build     # tsc -b (project references) + vite build -> dist/
 npm run lint      # eslint .
 npm run preview   # preview the production build locally
 ```
 
 There is no test suite/runner configured in this repo.
+
+**Never run `npm run dev`.** Do not start the Vite dev server for any reason (verifying a change, taking a screenshot, etc.) — the user has explicitly asked for this to never happen. Use `npm run build` / `tsc -b` / `npm run lint` to verify changes instead.
 
 Both `package-lock.json` and `pnpm-lock.yaml` are present, but the `Dockerfile` build uses **pnpm** (`corepack enable && corepack prepare pnpm@latest --activate`, `pnpm i`, `pnpm build`). Keep both lockfiles in sync if adding/removing dependencies, or check with the user which package manager is authoritative before assuming.
 

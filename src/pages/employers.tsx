@@ -2,9 +2,9 @@ import React from 'react';
 import H1 from '../components/ui/typographyh1';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { FileUser, Globe, Code, Phone, BookOpenText } from 'lucide-react';
+import { FileUser, Globe, Code, BookOpenText } from 'lucide-react';
 import LinImage from '../assets/LinkedIn.jpg'
-import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogCancel} from '../components/ui/alert-dialog';
+import ContactDialog from '../components/ui/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
 import P from '../components/ui/typographyp';
 import { useNavigate } from 'react-router-dom';
@@ -91,29 +91,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                                 Blog
                         </Button>
 
-                        <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                                <Button variant="default" size="lg">
-                                    <Phone data-icon="inline-start" />
-                                    Contact Me
-                                </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent size="sm" className="m-0 rounded-xl shadow-lg">
-                                <AlertDialogHeader>
-                                    <AlertDialogMedia>
-                                        <Phone data-icon="inline-start" />
-                                    </AlertDialogMedia>
-                                    <AlertDialogTitle>Contact Details</AlertDialogTitle>
-                                    <AlertDialogDescription>
-                                        <b>Email:</b> kamilianos3@gmail.com <br />
-                                        <b>Phone:</b> 7862 019098
-                                    </AlertDialogDescription>
-                                </AlertDialogHeader>
-                                <AlertDialogFooter>
-                                    <AlertDialogCancel size="lg" variant="default">Close</AlertDialogCancel>
-                                </AlertDialogFooter>
-                            </AlertDialogContent>
-                        </AlertDialog>
+                        <ContactDialog triggerLabel="Contact Me" />
                     </div>
                 </div>
             </div>
@@ -138,7 +116,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <P>Services: </P>
 
                 <div className="animate-fadeInUp grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-4 w-full max-w-full h-full">
-                    <Button>Spreadsheet Automation</Button>
+                    <Button onClick={() => navigate('/spreadsheet-automation')}>Spreadsheet Automation</Button>
                     <Button>Data Analysis & Engineering</Button>
                     <Button>Software-on-Demand</Button>
                     <Button className="md:col-span-3">Website Development</Button>
