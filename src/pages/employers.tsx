@@ -8,6 +8,7 @@ import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import P from '../components/ui/typographyp';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/seo';
 
 /*
 The main page will display three main buttons:
@@ -30,6 +31,11 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <SEO
+                title="For Employers — Kamil Kostrzewa"
+                description="CV, contact details, and background for Kamil Kostrzewa, a software engineer who builds and improves real-world systems for businesses."
+                path="/employers"
+            />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>

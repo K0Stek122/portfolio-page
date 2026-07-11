@@ -6,6 +6,7 @@ import { CodeIcon } from "lucide-react";
 import H1 from "../components/ui/typographyh1";
 import H2 from "../components/ui/typographyh2";
 import P from "../components/ui/typographyp";
+import SEO from "../components/seo";
 
 import xdumpImage from ".././assets/projects/xdump.png";
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif";
@@ -178,6 +179,11 @@ export default function PortfolioPage() {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <SEO
+                title="Portfolio — Kamil Kostrzewa"
+                description="Selected work, open source contributions, and volunteering projects by software engineer Kamil Kostrzewa."
+                path="/employers/portfolio"
+            />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>

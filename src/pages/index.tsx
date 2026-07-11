@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AlertDialog, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../components/ui/alert-dialog';
 import LargeButton from '../components/ui/large-button';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
+import SEO from '../components/seo';
 
 /*
 The main page will display three main buttons:
@@ -21,6 +22,11 @@ const IndexPage: React.FC<IndexPageProps> = () => {
 
     return (
         <div className="flex flex-col overflow-hidden justify-center items-center h-screen bg-background m-2">
+            <SEO
+                title="Kamil Kostrzewa — Software Engineer Portfolio"
+                description="Portfolio and blog of Kamil Kostrzewa, a software engineer building pragmatic, real-world systems, data workflows, and reliable web apps."
+                path="/"
+            />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground pb-4 m-2">
                 <BreadcrumbList>
                     <BreadcrumbItem>

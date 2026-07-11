@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import { Separator } from '../components/ui/separator';
+import SEO from '../components/seo';
 
 interface PostData {
     title: string;
@@ -31,6 +32,17 @@ function parseFrontmatter(raw: string): { data: Record<string, string | string[]
 
 const postModules = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default' });
 
+function getExcerpt(markdown: string, length = 160): string {
+    const plain = markdown
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/!\[.*?\]\(.*?\)/g, '')
+        .replace(/\[(.*?)\]\(.*?\)/g, '$1')
+        .replace(/[#*_`>]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    return plain.length > length ? `${plain.slice(0, length).trim()}…` : plain;
+}
+
 export default function BlogPostPage() {
     const [searchParams] = useSearchParams();
     const slug = searchParams.get('slug') ?? '';
@@ -54,6 +66,7 @@ export default function BlogPostPage() {
 
     if (notFound) return (
         <div className="flex items-center justify-center h-screen bg-background text-foreground">
+            <SEO title="Post not found — Kamil Kostrzewa" description="This blog post could not be found." path={`/blog/post?slug=${slug}`} />
             Post not found.
         </div>
     );
@@ -66,6 +79,12 @@ export default function BlogPostPage() {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <SEO
+                title={`${post.title} — Kamil Kostrzewa`}
+                description={getExcerpt(post.content)}
+                path={`/blog/post?slug=${slug}`}
+                type="article"
+            />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>

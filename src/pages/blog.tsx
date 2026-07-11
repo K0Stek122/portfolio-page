@@ -5,6 +5,7 @@ import { Input } from '../components/ui/input';
 import H1 from '../components/ui/typographyh1';
 import P from '../components/ui/typographyp';
 import { Separator } from '../components/ui/separator';
+import SEO from '../components/seo';
 
 interface PostMeta {
     slug: string;
@@ -65,6 +66,11 @@ export default function BlogPage() {
 
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <SEO
+                title="The Mind Palace — Kamil Kostrzewa's Blog"
+                description="Articles and notes from Kamil Kostrzewa on software engineering, writing, and more."
+                path="/blog"
+            />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>
