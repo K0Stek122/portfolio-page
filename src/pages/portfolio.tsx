@@ -22,6 +22,7 @@ import overlayImage from ".././assets/projects/pygameoverlay.png"
 import rpiImage from ".././assets/projects/rpi.png"
 import whahImage from ".././assets/projects/whah.png"
 import oxfamImage from ".././assets/projects/oxfam.png"
+import culturesentwinedImage from ".././assets/projects/culturesentwined.png"
 
 interface Project {
     title: string;
@@ -82,6 +83,12 @@ export default function PortfolioPage() {
             image: wjbImage,
             link: "https://www.wejobbox.com",
         },
+        {
+            title: "Data Automation Engineer",
+            description: "Automated data collection and analysis for Cultures Entwined",
+            image: culturesentwinedImage,
+            link: "https://culturesentwined.co.uk"
+        }
     ];
 
     const foss_projects: Project[] = [
