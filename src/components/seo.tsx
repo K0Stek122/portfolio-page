@@ -1,4 +1,4 @@
-const SITE_URL = 'https://k0stek122.github.io';
+const SITE_URL = 'https://kostek.uk';
 const SITE_NAME = 'Kamil Kostrzewa';
 
 interface SEOProps {

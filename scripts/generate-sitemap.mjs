@@ -6,7 +6,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const postsDir = join(__dirname, '../src/posts');
 const outFile = join(__dirname, '../public/sitemap.xml');
 
-const SITE_URL = 'https://k0stek122.github.io';
+const SITE_URL = 'https://kostek.uk';
 
 const STATIC_PATHS = ['/', '/employers', '/employers/portfolio', '/blog'];
 

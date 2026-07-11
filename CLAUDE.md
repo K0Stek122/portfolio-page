@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Kamil Kostrzewa's personal portfolio/blog site (`k0stek122.github.io`) — a static single-page React app built with Vite, deployed as a static site (GitHub Pages style SPA routing) and also containerized via Docker/`serve`.
+Kamil Kostrzewa's personal portfolio/blog site — a static single-page React app built with Vite, deployed containerized via Docker/`serve` (`serve -s` handles SPA fallback routing).
 
 ## Commands
 
@@ -28,8 +28,6 @@ Both `package-lock.json` and `pnpm-lock.yaml` are present, but the `Dockerfile` 
 - `/employers/portfolio` → `portfolio.tsx` — carousel-based project showcase (work, open source, volunteering)
 - `/blog` → `blog.tsx` — blog post index with title/tag search
 - `/blog/post` → `blog-post.tsx` — renders a single post; slug is passed as a **query param** (`?slug=...`), not a path param
-
-**GitHub Pages SPA redirect hack**: `public/404.html` rewrites deep links into `/?p=<path>&q=<search>&h=<hash>` on the `k0stek122.github.io` base path. `src/main.tsx` reads the `p` query param on boot and calls `window.history.replaceState` to restore the real path before React Router takes over. Do not "simplify away" this pair of files — they're required for direct/refreshed navigation to work on GitHub Pages.
 
 **Blog content pipeline**: Markdown files live in `src/posts/*.md` with YAML-ish frontmatter (`title`, `date`, `tags: [a, b]`, `file`). They are loaded at build time via `import.meta.glob('../posts/*.md', { query: '?raw', import: 'default' })` in both `blog.tsx` (list) and `blog-post.tsx` (detail). Frontmatter is parsed by a small hand-rolled regex parser (**duplicated** in both files, not shared) — if you change the frontmatter format, update the parser in both places. Post content is rendered with `react-markdown`; slug = filename without `.md`.
 
