@@ -19,10 +19,6 @@ interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = () => {
     const navigate = useNavigate();
 
-    const handleExternalLink = (url: string) => {
-        window.open(url, '_blank');
-    };
-
     return (
         <div className="flex flex-col overflow-hidden justify-center items-center h-screen bg-slate-800 m-2">
             <Breadcrumb className="animate-fadeInUp hover:text-white pb-4 m-2">
