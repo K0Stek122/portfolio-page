@@ -56,9 +56,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 />
                 <div className="flex flex-col items-center justify-center gap-4">
                     <H1>Kamil Kostrzewa</H1>
-                    <P>
-                        "Do More with Less. Be Pragmatic."
-                    </P>
+                    <P class="mt-2">Open To Work</P>
                     <div className="flex flex-row items-center justify-center gap-4">
 
                         <Button
