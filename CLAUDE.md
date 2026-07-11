@@ -22,16 +22,15 @@ Both `package-lock.json` and `pnpm-lock.yaml` are present, but the `Dockerfile` 
 
 ## Architecture
 
-**Routing** (`src/App.tsx`): `react-router-dom` with `BrowserRouter` and five routes, each mapped 1:1 to a component in `src/pages/`:
-- `/` → `index.tsx` — landing page with three buttons (Employers / Students-disabled / Blog)
-- `/employers` → `employers.tsx` — CV/contact/about page
+**Routing** (`src/App.tsx`): `react-router-dom` with `BrowserRouter` and four routes, each mapped 1:1 to a component in `src/pages/`:
+- `/` → `employers.tsx` — the site's home page: CV/contact/about content plus LinkedIn/CV/Portfolio/Blog buttons (there is no separate `index.tsx`/`/employers` route — `employers.tsx` *is* the landing page)
 - `/employers/portfolio` → `portfolio.tsx` — carousel-based project showcase (work, open source, volunteering)
 - `/blog` → `blog.tsx` — blog post index with title/tag search
 - `/blog/post` → `blog-post.tsx` — renders a single post; slug is passed as a **query param** (`?slug=...`), not a path param
 
 **Blog content pipeline**: Markdown files live in `src/posts/*.md` with YAML-ish frontmatter (`title`, `date`, `tags: [a, b]`, `file`). They are loaded at build time via `import.meta.glob('../posts/*.md', { query: '?raw', import: 'default' })` in both `blog.tsx` (list) and `blog-post.tsx` (detail). Frontmatter is parsed by a small hand-rolled regex parser (**duplicated** in both files, not shared) — if you change the frontmatter format, update the parser in both places. Post content is rendered with `react-markdown`; slug = filename without `.md`.
 
-**UI components** (`src/components/ui/`): shadcn/ui-style primitives (`button`, `input`, `separator`, `breadcrumb`, `alert-dialog`, `carousel`) generated per `components.json` (style: `new-york`, no RSC, Tailwind CSS variables, `lucide-react` icons). Plus a few site-specific ones: `large-button.tsx`, `project-card.tsx`, `typographyh1.tsx`/`typographyh2.tsx`/`typographyp.tsx` (typography wrappers used instead of raw `<h1>`/`<p>` on most pages). Use the `@/` path alias (mapped to `src/`, configured in `vite.config.ts` and `tsconfig.app.json`) for new imports; existing page files under `src/pages/` use relative `../` imports instead — match whichever convention the file you're editing already uses.
+**UI components** (`src/components/ui/`): shadcn/ui-style primitives (`button`, `input`, `separator`, `breadcrumb`, `alert-dialog`, `carousel`) generated per `components.json` (style: `new-york`, no RSC, Tailwind CSS variables, `lucide-react` icons). Plus a few site-specific ones: `project-card.tsx`, `typographyh1.tsx`/`typographyh2.tsx`/`typographyp.tsx` (typography wrappers used instead of raw `<h1>`/`<p>` on most pages). `button.tsx`'s `buttonVariants` bakes in the site's hover/entrance animation classes (`hover:scale-110`, `animate-fadeInUp`, etc.) so every `<Button>` gets them for free — don't re-add them via a page-local className. Use the `@/` path alias (mapped to `src/`, configured in `vite.config.ts` and `tsconfig.app.json`) for new imports; existing page files under `src/pages/` use relative `../` imports instead — match whichever convention the file you're editing already uses.
 
 **Styling**: Tailwind CSS v4 via `@tailwindcss/vite` plugin, with `@theme inline` in `src/index.css` (CSS-first config) alongside a legacy `tailwind.config.ts` (defines the `fadeInUp` entrance animation used with the `animate-fadeInUp` class throughout page components, plus an unused `testpink` color). Dark, slate-800-based color scheme is applied per-page rather than through a global dark mode toggle.
 

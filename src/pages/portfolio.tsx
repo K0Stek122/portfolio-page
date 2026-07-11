@@ -191,10 +191,6 @@ export default function PortfolioPage() {
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-foreground" href="/employers">For Employers</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
                         <BreadcrumbLink className="hover:text-foreground" href="/employers/portfolio">Portfolio</BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>

@@ -2,10 +2,10 @@ import React from 'react';
 import H1 from '../components/ui/typographyh1';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { FileUser, Globe, Code, Phone } from 'lucide-react';
+import { FileUser, Globe, Code, Phone, BookOpenText } from 'lucide-react';
 import LinImage from '../assets/LinkedIn.jpg'
 import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogTitle, AlertDialogDescription, AlertDialogHeader, AlertDialogFooter, AlertDialogMedia, AlertDialogCancel} from '../components/ui/alert-dialog';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
 import P from '../components/ui/typographyp';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/seo';
@@ -31,18 +31,14 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
             <SEO
-                title="For Employers — Kamil Kostrzewa"
-                description="CV, contact details, and background for Kamil Kostrzewa, a software engineer who builds and improves real-world systems for businesses."
-                path="/employers"
+                title="Kamil Kostrzewa — Software Engineer Portfolio"
+                description="Portfolio and blog of Kamil Kostrzewa, a software engineer building pragmatic, real-world systems, data workflows, and reliable web apps."
+                path="/"
             />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>
                         <BreadcrumbLink className="hover:text-foreground" href="/">Home</BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-foreground" href="/employers">For Employers</BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
@@ -55,8 +51,8 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 />
                 <div className="flex flex-col items-center justify-center gap-4">
                     <H1>Kamil Kostrzewa</H1>
-                    <P class="mt-2">Open To Work</P>
-                    <div className="flex flex-row items-center justify-center gap-4">
+                    <P>Open To Work</P>
+                    <div className="flex flex-row flex-wrap items-center justify-center gap-4">
 
                         <Button
                             variant="default"
@@ -85,29 +81,40 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                         </Button>
                     </div>
 
-                    <AlertDialog>
-                        <AlertDialogTrigger asChild>
-                            <Button variant="default" size="lg">
-                                <Phone data-icon="inline-start" />
-                                Contact Me
-                            </Button>
-                        </AlertDialogTrigger>
-                        <AlertDialogContent size="sm" className="m-0 rounded-xl shadow-lg">
-                            <AlertDialogHeader>
-                                <AlertDialogMedia>
+                    <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+                        <Button
+                            variant="default"
+                            size="lg"
+                            onClick={() => navigate('/blog')}
+                            >
+                                <BookOpenText data-icon="inline-start" />
+                                Blog
+                        </Button>
+
+                        <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                                <Button variant="default" size="lg">
                                     <Phone data-icon="inline-start" />
-                                </AlertDialogMedia>
-                                <AlertDialogTitle>Contact Details</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                    <b>Email:</b> kamilianos3@gmail.com <br />
-                                    <b>Phone:</b> 7862 019098
-                                </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                                <AlertDialogCancel size="lg" variant="default">Close</AlertDialogCancel>
-                            </AlertDialogFooter>
-                        </AlertDialogContent>
-                    </AlertDialog>
+                                    Contact Me
+                                </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent size="sm" className="m-0 rounded-xl shadow-lg">
+                                <AlertDialogHeader>
+                                    <AlertDialogMedia>
+                                        <Phone data-icon="inline-start" />
+                                    </AlertDialogMedia>
+                                    <AlertDialogTitle>Contact Details</AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                        <b>Email:</b> kamilianos3@gmail.com <br />
+                                        <b>Phone:</b> 7862 019098
+                                    </AlertDialogDescription>
+                                </AlertDialogHeader>
+                                <AlertDialogFooter>
+                                    <AlertDialogCancel size="lg" variant="default">Close</AlertDialogCancel>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                        </AlertDialog>
+                    </div>
                 </div>
             </div>
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
