@@ -2,7 +2,11 @@
 
 @import "tailwindcss";
 @import "tw-animate-css";
-@import '@fontsource/inter';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
+@import '@fontsource/inter/800.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,7 +52,7 @@
 }
 
 :root {
-  --background: oklch(0.9 0.03 85);
+  --background: oklch(1 0 0);
   --foreground: oklch(0.148 0.004 228.8);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.148 0.004 228.8);

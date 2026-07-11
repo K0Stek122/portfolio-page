@@ -6,10 +6,10 @@ import ContactDialog from '../components/ui/contact-dialog';
 import SEO from '../components/seo';
 
 const services = [
-    { title: 'Service One', description: 'Placeholder description for this automation service.' },
-    { title: 'Service Two', description: 'Placeholder description for this automation service.' },
-    { title: 'Service Three', description: 'Placeholder description for this automation service.' },
-    { title: 'Service Four', description: 'Placeholder description for this automation service.' },
+    { title: 'Excel Automation', description: 'Turn spreadsheet hell into well-defined data input sites and automated data analysis.' },
+    { title: 'Database Engineering', description: 'Turn your data into a database and abstract away the messiness.' },
+    { title: 'Business Intelligence', description: 'Let us analyse your business and show you the science in a clear manner.' },
+    { title: 'GDPR Compliance', description: 'Hire a consultant to ensure proper laws are followed.' },
 ];
 
 export default function SpreadsheetAutomationPage() {

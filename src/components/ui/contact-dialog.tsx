@@ -33,7 +33,7 @@ export default function ContactDialog({ triggerLabel = 'Contact Me' }: ContactDi
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel size="lg" variant="default">Close</AlertDialogCancel>
+                    <AlertDialogCancel size="lg" variant="default" style={{ animation: 'none' }}>Close</AlertDialogCancel>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
