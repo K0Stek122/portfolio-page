@@ -23,8 +23,7 @@ interface EmployersPageProps {
 
 const EmployersPage: React.FC<EmployersPageProps> = () => {
     const navigate = useNavigate();
-    const buttonStyles = "transition-transform duration-200 hover:scale-110 hover:cursor-pointer animate-fadeInUp";
-    
+
     const handleExternalLink = (url: string) => {
         window.open(url, '_blank');
     };
@@ -62,7 +61,6 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                         <Button
                             variant="default"
                             size="lg"
-                            className={buttonStyles}
                             onClick={() => handleExternalLink("https://www.linkedin.com/in/kamil-kostek/")}>
                                 <Globe data-icon="inline-start" />
                                 LinkedIn
@@ -71,7 +69,6 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                         <Button
                             variant="default"
                             size="lg"
-                            className={buttonStyles}
                             onClick={() => handleExternalLink("https://docs.google.com/document/d/1q6EBuYkSe4tXu3gUG89antRiKxH-XCKnsW3TovMqB9w/edit?usp=drive_link")}
                             >
                                 <FileUser data-icon="inline-start" />
@@ -81,7 +78,6 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                         <Button
                             variant="default"
                             size="lg"
-                            className={buttonStyles}
                             onClick={() => navigate('/employers/portfolio')}
                             >
                                 <Code data-icon="inline-start" />
@@ -91,7 +87,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
 
                     <AlertDialog>
                         <AlertDialogTrigger asChild>
-                            <Button variant="default" size="lg" className={buttonStyles}>
+                            <Button variant="default" size="lg">
                                 <Phone data-icon="inline-start" />
                                 Contact Me
                             </Button>
@@ -119,45 +115,27 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <H1>About Me</H1>
                 <P>
                     I'm a software engineer who builds and improves real-world systems for businesses — from internal tools and data workflows to reliable websites.
-                    I focus on clear communication and clean code, so your systems are faster, easier to maintain, and easier to scale. You can view selected projects on GitHub.
-                </P>
-                <P>
-                    Most of my work is about creating solid foundations that last.
-                    I'm particularly helpful when dealing with messy data, repetitive admin work, or systems that need stabilising and simplifying.
+                    I focus on clear communication so that your systems are faster, easier to maintain, and easier to scale. You can view selected projects on GitHub.
                 </P>
 
-                <H1>Full-Time & Part-Time Work</H1>
-                <P className="mr-4">
-                    I am seeking work in Software Engineering & IT Engineering.
-                </P>
-                <P>
-                    I enjoy working in fast-paced environments where problem-solving and critical thinking are key.
-                    I deliver cost and time savings by thinking outside the box and coming up with solutions.
-                    Please take a look at my CV and contact me if you're an employer looking for a disciplined and an eager to learn individual.
-                </P>
-                
                 <H1>Freelance & Contract Work</H1>
                 <P>
-                    I work with small and medium-sized businesses, startups, and teams that need an extra pair of hands for short-term projects or ongoing improvements.
-                    Whether you're fixing an existing system or building something new, I focus on practical solutions that save time and make day-to-day work easier.
+                    I work with small and medium-sized businesses that need an extra pair of hands.
+                    I focus on practical solutions that save time and make day-to-day work easier.
                 </P>
 
                 <P>
-                    How I Can Help:
+                    I offer free consultations and I charge per product.
                 </P>
 
-                <ul className="ml-6 list-disc mt-2 text-foreground">
-                    <li className="mb-2">Data & reporting tools — spreadsheets, dashboards, automation to cut down manual work.</li>
-                    <li className="mb-2">Application improvements — refactoring, documentation, performance tuning, and CI/CD setup.</li>
-                    <li className="mb-2">Internal tools — Small custom apps for bookkeeping, operations, or team workflows.</li>
-                    <li className="mb-6">Website & web apps — clean, maintainable sites built to last.</li>
-                </ul>
+                <P>Services: </P>
 
-                <P>
-                    I offer free consultations and clear, fixed pricing. If you're not sure whether your problem fits, feel free to reach out — I'm always happy to chat and see how I can help.
-                </P>
-
-                <P><b>Available for freelance projects and open to full-time opportunities.</b></P>
+                <div className="animate-fadeInUp grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-4 w-full max-w-full h-full">
+                    <Button>Spreadsheet Automation</Button>
+                    <Button>Data Analysis & Engineering</Button>
+                    <Button>Software-on-Demand</Button>
+                    <Button className="md:col-span-3">Website Development</Button>
+                </div>
             </div>
         </div>
     );
