@@ -34,15 +34,16 @@ interface Project {
 function ProjectCard({ title, description, image, link }: Project) {
     const handleExternalLink = (url: string) => window.open(url, "_blank");
     return (
-        <div className="bg-slate-700 rounded-lg p-4 flex flex-col gap-3 h-80">
+        <div className="bg-card rounded-lg p-4 flex flex-col gap-3 h-80">
             <div className="h-40 w-full overflow-hidden rounded-lg shrink-0">
                 <img src={image} alt={title} className="h-full w-full object-cover" />
             </div>
-            <p className="text-white font-bold line-clamp-1">{title}</p>
-            <p className="text-gray-300 text-sm line-clamp-2 flex-1">{description}</p>
+            <p className="text-card-foreground font-bold line-clamp-1">{title}</p>
+            <p className="text-muted-foreground text-sm line-clamp-2 flex-1">{description}</p>
             <Button
                 size="sm"
-                className="bg-slate-600 hover:bg-slate-800 transition-transform duration-200 hover:scale-105 hover:cursor-pointer w-full"
+                variant="secondary"
+                className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer w-full"
                 onClick={() => handleExternalLink(link)}
             >
                 <CodeIcon data-icon="inline-start" aria-hidden={false} />
@@ -62,8 +63,8 @@ function ProjectCarousel({ projects }: { projects: Project[] }) {
                     </CarouselItem>
                 ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-slate-700 border-none text-white hover:bg-slate-600 hover:text-white" />
-            <CarouselNext className="bg-slate-700 border-none text-white hover:bg-slate-600 hover:text-white" />
+            <CarouselPrevious />
+            <CarouselNext />
         </Carousel>
     );
 }
@@ -176,19 +177,19 @@ export default function PortfolioPage() {
     ];
 
     return (
-        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-slate-800 gap-6 py-8 px-4">
-            <Breadcrumb className="animate-fadeInUp hover:text-white">
+        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/">Home</BreadcrumbLink>
+                        <BreadcrumbLink className="hover:text-foreground" href="/">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/employers">For Employers</BreadcrumbLink>
+                        <BreadcrumbLink className="hover:text-foreground" href="/employers">For Employers</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/employers/portfolio">Portfolio</BreadcrumbLink>
+                        <BreadcrumbLink className="hover:text-foreground" href="/employers/portfolio">Portfolio</BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
@@ -224,7 +225,8 @@ export default function PortfolioPage() {
             <div className="animate-fadeInUp flex flex-col items-center gap-2 pb-8">
                 <P>For a full range of my projects, have a look at my GitHub:</P>
                 <Button
-                    className="bg-slate-600 hover:bg-slate-900 transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
+                    variant="secondary"
+                    className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
                     onClick={() => window.open("https://github.com/K0Stek122", "_blank")}
                 >
                     <CodeIcon data-icon="inline-start" aria-hidden={false} />

@@ -20,15 +20,15 @@ const IndexPage: React.FC<IndexPageProps> = () => {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col overflow-hidden justify-center items-center h-screen bg-slate-800 m-2">
-            <Breadcrumb className="animate-fadeInUp hover:text-white pb-4 m-2">
+        <div className="flex flex-col overflow-hidden justify-center items-center h-screen bg-background m-2">
+            <Breadcrumb className="animate-fadeInUp hover:text-foreground pb-4 m-2">
                 <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/">Home</BreadcrumbLink>
+                        <BreadcrumbLink className="hover:text-foreground" href="/">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
-            <div className="flex items-center justify-center h-screen bg-slate-800 gap-4">
+            <div className="flex items-center justify-center h-screen bg-background gap-4">
                 <LargeButton onClick={()=> navigate('/employers')}>
                     <LaptopMinimalCheck className="size-14" data-icon="inline-start" aria-hidden="true" />
                     For Employers
@@ -42,10 +42,10 @@ const IndexPage: React.FC<IndexPageProps> = () => {
                             For Students
                         </LargeButton>
                     </AlertDialogTrigger>
-                    <AlertDialogContent className="bg-slate-800 text-white border-none">
+                    <AlertDialogContent>
                         <AlertDialogHeader>
                             <AlertDialogTitle>Sorry!</AlertDialogTitle>
-                            <AlertDialogDescription className="text-gray-300">
+                            <AlertDialogDescription>
                                 I'm working very hard to provide you understandable and easy-to-follow learning content, but I still need more time. Until then you can find tutorials on my blog.
                             </AlertDialogDescription>
                         </AlertDialogHeader>

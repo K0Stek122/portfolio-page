@@ -22,22 +22,22 @@ interface EmployersPageProps {
 
 const EmployersPage: React.FC<EmployersPageProps> = () => {
     const navigate = useNavigate();
-    const buttonStyles = "bg-slate-700 transition-transform duration-200 hover:scale-110 hover:cursor-pointer animate-fadeInUp";
+    const buttonStyles = "transition-transform duration-200 hover:scale-110 hover:cursor-pointer animate-fadeInUp";
     
     const handleExternalLink = (url: string) => {
         window.open(url, '_blank');
     };
 
     return (
-        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-slate-800 gap-6 py-8 px-4">
-            <Breadcrumb className="animate-fadeInUp hover:text-white">
-                <BreadcrumbList> 
+        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+            <Breadcrumb className="animate-fadeInUp hover:text-foreground">
+                <BreadcrumbList>
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/">Home</BreadcrumbLink>     
+                        <BreadcrumbLink className="hover:text-foreground" href="/">Home</BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                        <BreadcrumbLink className="hover:text-white" href="/employers">For Employers</BreadcrumbLink>
+                        <BreadcrumbLink className="hover:text-foreground" href="/employers">For Employers</BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>
             </Breadcrumb>
@@ -92,13 +92,13 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                                 Contact Me
                             </Button>
                         </AlertDialogTrigger>
-                        <AlertDialogContent size="sm" className="text-white bg-slate-800 border-none m-0 rounded rounded-xl shadow-lg">
+                        <AlertDialogContent size="sm" className="m-0 rounded-xl shadow-lg">
                             <AlertDialogHeader>
-                                <AlertDialogMedia className="bg-slate-700 text-white">
+                                <AlertDialogMedia>
                                     <Phone data-icon="inline-start" />
                                 </AlertDialogMedia>
                                 <AlertDialogTitle>Contact Details</AlertDialogTitle>
-                                <AlertDialogDescription className="text-gray-300">
+                                <AlertDialogDescription>
                                     <b>Email:</b> kamilianos3@gmail.com <br />
                                     <b>Phone:</b> 7862 019098
                                 </AlertDialogDescription>
@@ -142,7 +142,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                     How I Can Help:
                 </P>
 
-                <ul className="ml-6 list-disc mt-2 text-white">
+                <ul className="ml-6 list-disc mt-2 text-foreground">
                     <li className="mb-2">Data & reporting tools — spreadsheets, dashboards, automation to cut down manual work.</li>
                     <li className="mb-2">Application improvements — refactoring, documentation, performance tuning, and CI/CD setup.</li>
                     <li className="mb-2">Internal tools — Small custom apps for bookkeeping, operations, or team workflows.</li>
