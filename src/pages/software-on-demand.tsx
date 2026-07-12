@@ -5,22 +5,22 @@ import { Separator } from '../components/ui/separator';
 import CtaButtons from '../components/cta-buttons';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import SEO from '../components/seo';
-import { FileSpreadsheet, Database, BarChart3, ShieldCheck } from 'lucide-react';
+import { Bot, Lightbulb, Layers, UserPlus } from 'lucide-react';
 
 const services = [
-    { title: 'Excel Automation', description: 'Turn spreadsheet hell into well-defined data input sites and automated data analysis.', icon: FileSpreadsheet },
-    { title: 'Database Engineering', description: 'Turn your data into a database and abstract away the messiness.', icon: Database },
-    { title: 'Business Intelligence', description: 'Let us analyse your business and show you the science in a clear manner.', icon: BarChart3 },
-    { title: 'GDPR Compliance', description: 'Hire a consultant to ensure proper laws are followed.', icon: ShieldCheck },
+    { title: 'Get agentic code production-ready', description: 'Turn AI-generated prototypes into secure, tested, and maintainable software you can actually ship.', icon: Bot },
+    { title: 'Prototype a business idea', description: 'Validate your concept fast with a working MVP built to prove the idea, not just pitch it.', icon: Lightbulb },
+    { title: 'Outsource labour-intensive system components', description: 'Hand off the heavy lifting — we build and integrate the pieces that eat up your team\'s time.', icon: Layers },
+    { title: 'Hire a developer', description: 'Bring dedicated engineering expertise onto your team, on your timeline, without the overhead of a full-time hire.', icon: UserPlus },
 ];
 
-export default function SpreadsheetAutomationPage() {
+export default function SoftwareOnDemandPage() {
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
-                title="Spreadsheet Automation — Kamil Kostrzewa"
-                description="Automation specialists for hire. Get the IT help you need to eliminate repetitive admin work."
-                path="/spreadsheet-automation"
+                title="Software-on-Demand — Kamil Kostrzewa"
+                description="Software development specialists for hire. Create custom tools at a competitive price."
+                path="/software-on-demand"
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
@@ -31,14 +31,14 @@ export default function SpreadsheetAutomationPage() {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink className="hover:text-foreground" href="/spreadsheet-automation">Spreadsheet Automation</BreadcrumbLink>
+                            <BreadcrumbLink className="hover:text-foreground" href="/software-on-demand">Software-on-Demand</BreadcrumbLink>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
 
                 <div className="flex flex-col items-center text-center gap-3 w-full max-w-3xl mx-auto px-4 pt-6 pb-16">
-                    <H1 className="animate-fadeInUp">Say goodbye to admin work</H1>
-                    <H2 className="animate-fadeInUp text-muted-foreground font-medium">Automation Specialists for hire. Get the IT help you need.</H2>
+                    <H1 className="animate-fadeInUp">Software, built on demand</H1>
+                    <H2 className="animate-fadeInUp text-muted-foreground font-medium">Software Development Specialists for hire. Create custom tools at a competitive price.</H2>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@ export default function SpreadsheetAutomationPage() {
             </div>
 
             <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
-                <H2 className="animate-fadeInUp">Ready to eliminate the busywork?</H2>
+                <H2 className="animate-fadeInUp">Ready to build something great?</H2>
                 <CtaButtons />
             </div>
 

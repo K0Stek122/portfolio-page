@@ -3,9 +3,9 @@ import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext
 import { Separator } from "../components/ui/separator";
 import { Button } from "../components/ui/button";
 import { CodeIcon, GraduationCap } from "lucide-react";
-import H1 from "../components/ui/typographyh1";
-import H2 from "../components/ui/typographyh2";
-import P from "../components/ui/typographyp";
+import H1 from "../components/typographyh1";
+import H2 from "../components/typographyh2";
+import P from "../components/typographyp";
 import SEO from "../components/seo";
 
 import xdumpImage from ".././assets/projects/xdump.png";

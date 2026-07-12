@@ -1,12 +1,12 @@
 import React from 'react';
-import H1 from '../components/ui/typographyh1';
+import H1 from '../components/typographyh1';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { FileUser, Globe, Code, BookOpenText } from 'lucide-react';
 import LinImage from '../assets/LinkedIn.jpg'
-import ContactDialog from '../components/ui/contact-dialog';
+import ContactDialog from '../components/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
-import P from '../components/ui/typographyp';
+import P from '../components/typographyp';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/seo';
 
@@ -115,10 +115,10 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
 
                 <P>Services: </P>
 
-                <div className="animate-fadeInUp grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-4 w-full max-w-full h-full">
+                <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
                     <Button onClick={() => navigate('/spreadsheet-automation')}>Spreadsheet Automation</Button>
-                    <Button>Software-on-Demand</Button>
-                    <Button className="md:col-span-3">Website Development</Button>
+                    <Button onClick={() => navigate('/software-on-demand')}>Software-on-Demand</Button>
+                    <Button>Website Development</Button>
                 </div>
             </div>
         </div>

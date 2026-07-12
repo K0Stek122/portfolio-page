@@ -1,5 +1,5 @@
 import { Mail, Phone } from 'lucide-react';
-import { Button } from './button';
+import { Button } from './ui/button';
 import {
     AlertDialog,
     AlertDialogTrigger,
@@ -9,7 +9,7 @@ import {
     AlertDialogHeader,
     AlertDialogFooter,
     AlertDialogCancel,
-} from './alert-dialog';
+} from './ui/alert-dialog';
 
 interface ContactDialogProps {
     triggerLabel?: string;

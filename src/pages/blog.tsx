@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import { Input } from '../components/ui/input';
-import H1 from '../components/ui/typographyh1';
-import P from '../components/ui/typographyp';
+import H1 from '../components/typographyh1';
+import P from '../components/typographyp';
 import { Separator } from '../components/ui/separator';
 import SEO from '../components/seo';
 

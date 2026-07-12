@@ -8,7 +8,7 @@ const outFile = join(__dirname, '../public/sitemap.xml');
 
 const SITE_URL = 'https://kostek.uk';
 
-const STATIC_PATHS = ['/', '/employers/portfolio', '/spreadsheet-automation', '/blog'];
+const STATIC_PATHS = ['/', '/employers/portfolio', '/spreadsheet-automation', '/software-on-demand', '/blog'];
 
 function parseFrontmatter(raw) {
     const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
