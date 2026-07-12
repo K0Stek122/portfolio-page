@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbS
 import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "../components/ui/carousel";
 import { Separator } from "../components/ui/separator";
 import { Button } from "../components/ui/button";
-import { CodeIcon } from "lucide-react";
+import { CodeIcon, GraduationCap } from "lucide-react";
 import H1 from "../components/ui/typographyh1";
 import H2 from "../components/ui/typographyh2";
 import P from "../components/ui/typographyp";
@@ -24,11 +24,12 @@ import rpiImage from ".././assets/projects/rpi.png"
 import whahImage from ".././assets/projects/whah.png"
 import oxfamImage from ".././assets/projects/oxfam.png"
 import culturesentwinedImage from ".././assets/projects/culturesentwined.png"
+import bachelorDissertationImage from ".././assets/projects/dissertation.png"
 
 interface Project {
     title: string;
     description: string;
-    image: string;
+    image?: string;
     link: string;
 }
 
@@ -36,8 +37,12 @@ function ProjectCard({ title, description, image, link }: Project) {
     const handleExternalLink = (url: string) => window.open(url, "_blank");
     return (
         <div className="bg-card rounded-lg p-4 flex flex-col gap-3 h-80">
-            <div className="h-40 w-full overflow-hidden rounded-lg shrink-0">
-                <img src={image} alt={title} className="h-full w-full object-cover" />
+            <div className="h-40 w-full overflow-hidden rounded-lg shrink-0 bg-muted flex items-center justify-center">
+                {image ? (
+                    <img src={image} alt={title} className="h-full w-full object-cover" />
+                ) : (
+                    <GraduationCap className="size-12 text-muted-foreground" />
+                )}
             </div>
             <p className="text-card-foreground font-bold line-clamp-1">{title}</p>
             <p className="text-muted-foreground text-sm line-clamp-2 flex-1">{description}</p>
@@ -47,19 +52,18 @@ function ProjectCard({ title, description, image, link }: Project) {
                 className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer w-full"
                 onClick={() => handleExternalLink(link)}
             >
-                <CodeIcon data-icon="inline-start" aria-hidden={false} />
-                See it yourself
+                Learn More
             </Button>
         </div>
     );
 }
 
-function ProjectCarousel({ projects }: { projects: Project[] }) {
+function ProjectCarousel({ projects, itemClassName = "md:basis-1/2 lg:basis-1/3" }: { projects: Project[]; itemClassName?: string }) {
     return (
         <Carousel className="w-full px-12" opts={{ align: "start" }}>
             <CarouselContent>
                 {projects.map((project, index) => (
-                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <CarouselItem key={index} className={itemClassName}>
                         <ProjectCard {...project} />
                     </CarouselItem>
                 ))}
@@ -177,6 +181,15 @@ export default function PortfolioPage() {
         }
     ];
 
+    const academic_projects: Project[] = [
+        {
+            title: "Bachelor's Dissertation",
+            description: "Network Intrusion Detection System for Microservices with Novel Hybrid Finite Automata",
+            image: bachelorDissertationImage,
+            link: "https://drive.google.com/file/d/1KM0cII-CPsCitqQ0H2YRtf5pCoDhdfa3/view?usp=sharing",
+        }
+    ];
+
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background gap-6 py-8 px-4">
             <SEO
@@ -220,6 +233,13 @@ export default function PortfolioPage() {
             <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl pb-8">
                 <H2>Volunteering</H2>
                 <ProjectCarousel projects={volunteering_projects} />
+            </div>
+
+            <Separator className="animate-fadeInUp w-full max-w-5xl" />
+
+            <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl pb-8">
+                <H2>Academic</H2>
+                <ProjectCarousel projects={academic_projects} itemClassName="basis-full md:basis-1/2 lg:basis-1/3" />
             </div>
 
             <Separator className="animate-fadeInUp w-full max-w-5xl" />
