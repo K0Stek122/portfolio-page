@@ -117,7 +117,6 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
 
                 <div className="animate-fadeInUp grid grid-cols-1 md:grid-cols-3 justify-items-center items-center gap-4 w-full max-w-full h-full">
                     <Button onClick={() => navigate('/spreadsheet-automation')}>Spreadsheet Automation</Button>
-                    <Button>Data Analysis & Engineering</Button>
                     <Button>Software-on-Demand</Button>
                     <Button className="md:col-span-3">Website Development</Button>
                 </div>
