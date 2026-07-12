@@ -178,7 +178,7 @@ export default function PortfolioPage() {
     ];
 
     return (
-        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background gap-6 py-8 px-4">
             <SEO
                 title="Portfolio — Kamil Kostrzewa"
                 description="Selected work, open source contributions, and volunteering projects by software engineer Kamil Kostrzewa."

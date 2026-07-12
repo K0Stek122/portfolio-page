@@ -29,7 +29,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
     };
 
     return (
-        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-screen w-full bg-background gap-6 py-8 px-4">
+        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background gap-6 py-8 px-4">
             <SEO
                 title="Kamil Kostrzewa — Software Engineer Portfolio"
                 description="Portfolio and blog of Kamil Kostrzewa, a software engineer building pragmatic, real-world systems, data workflows, and reliable web apps."

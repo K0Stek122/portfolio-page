@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import H1 from '../components/ui/typographyh1';
 import H2 from '../components/ui/typographyh2';
 import P from '../components/ui/typographyp';
 import { Separator } from '../components/ui/separator';
+import { Button } from '../components/ui/button';
 import ContactDialog from '../components/ui/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import SEO from '../components/seo';
@@ -15,8 +17,10 @@ const services = [
 ];
 
 export default function SpreadsheetAutomationPage() {
+    const navigate = useNavigate();
+
     return (
-        <div className="flex flex-col items-center w-full bg-background">
+        <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
                 title="Spreadsheet Automation — Kamil Kostrzewa"
                 description="Automation specialists for hire. Get the IT help you need to eliminate repetitive admin work."
@@ -61,7 +65,12 @@ export default function SpreadsheetAutomationPage() {
 
             <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
                 <H2 className="animate-fadeInUp">Ready to eliminate the busywork?</H2>
-                <ContactDialog triggerLabel="Contact Us" />
+                <div className="flex flex-row flex-wrap items-center justify-center gap-4">
+                    <ContactDialog triggerLabel="Contact Us" />
+                    <Button variant="default" size="lg" onClick={() => navigate('/')}>
+                        Learn More
+                    </Button>
+                </div>
             </div>
 
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
