@@ -4,34 +4,37 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Kamil Kostrzewa's personal portfolio/blog site — a static single-page React app built with Vite, deployed containerized via Docker/`serve` (`serve -s` handles SPA fallback routing).
+Kamil Kostrzewa's personal portfolio site — a React app built with Vite, prerendered to static HTML per-route at build time, deployed containerized via Docker/`serve`.
 
 ## Commands
 
 ```bash
 npm install       # install deps (README says `npm install -D`; either works)
-npm run build     # tsc -b (project references) + vite build -> dist/
+npm run build     # tsc -b + client build + SSR build + prerender -> dist/ (see Prerendering below)
 npm run lint      # eslint .
 npm run preview   # preview the production build locally
 ```
 
 There is no test suite/runner configured in this repo.
 
-**Never run `npm run dev`.** Do not start the Vite dev server for any reason (verifying a change, taking a screenshot, etc.) — the user has explicitly asked for this to never happen. Use `npm run build` / `tsc -b` / `npm run lint` to verify changes instead.
+**Never run `npm run dev`.** Do not start the Vite dev server for any reason (verifying a change, taking a screenshot, etc.) — the user has explicitly asked for this to never happen. Use `npm run build` / `tsc -b` / `npm run lint` to verify changes instead. To sanity-check a real build's output, run `npm run build` then serve `dist/` with `serve dist` (or ask the user to) and `curl` it — this is not the forbidden dev server.
 
 Both `package-lock.json` and `pnpm-lock.yaml` are present, but the `Dockerfile` build uses **pnpm** (`corepack enable && corepack prepare pnpm@latest --activate`, `pnpm i`, `pnpm build`). Keep both lockfiles in sync if adding/removing dependencies, or check with the user which package manager is authoritative before assuming.
 
 ## Architecture
 
-**Routing** (`src/App.tsx`): `react-router-dom` with `BrowserRouter` and six routes, each mapped 1:1 to a component in `src/pages/`:
-- `/` → `employers.tsx` — the site's home page: CV/contact/about content plus LinkedIn/CV/Portfolio/Blog buttons (there is no separate `index.tsx`/`/employers` route — `employers.tsx` *is* the landing page)
+**Routing** (`src/App.tsx`): `react-router-dom` with four routes, each mapped 1:1 to a component in `src/pages/`. `App.tsx` itself contains only `<Routes>`/`<Route>` (no `<BrowserRouter>`) so it can be reused by both the client entry (`src/main.tsx`, wraps in `BrowserRouter`) and the SSR entry (`src/entry-server.tsx`, wraps in `StaticRouter`) — see Prerendering below.
+- `/` → `employers.tsx` — the site's home page: CV/contact/about content plus LinkedIn/CV/Portfolio buttons (there is no separate `index.tsx`/`/employers` route — `employers.tsx` *is* the landing page)
 - `/employers/portfolio` → `portfolio.tsx` — carousel-based project showcase (work, open source, volunteering, academic)
 - `/spreadsheet-automation` → `spreadsheet-automation.tsx` — business-style service landing page (hero, service cards, CTA)
 - `/software-on-demand` → `software-on-demand.tsx` — same layout as `spreadsheet-automation.tsx`, different service copy
-- `/blog` → `blog.tsx` — blog post index with title/tag search
-- `/blog/post` → `blog-post.tsx` — renders a single post; slug is passed as a **query param** (`?slug=...`), not a path param
 
-**Blog content pipeline**: Markdown files live in `src/posts/*.md` with YAML-ish frontmatter (`title`, `date`, `tags: [a, b]`, `file`). They are loaded at build time via `import.meta.glob('../posts/*.md', { query: '?raw', import: 'default' })` in both `blog.tsx` (list) and `blog-post.tsx` (detail). Frontmatter is parsed by a small hand-rolled regex parser (**duplicated** in both files, not shared) — if you change the frontmatter format, update the parser in both places. Post content is rendered with `react-markdown`; slug = filename without `.md`.
+**No blog**: the old `/blog` and `/blog/post` routes and their pages (`blog.tsx`, `blog-post.tsx`, `src/posts/*.md`) were removed from routing because the query-param-based post URLs (`?slug=...`) don't play well with per-route static prerendering. A separate static-site-generated blog will eventually be hosted at `/blog` outside this app. If `blog.tsx`/`blog-post.tsx`/`src/posts/` are still present on disk, they're orphaned (unreferenced by `App.tsx`) and safe to delete along with the now-unused `react-markdown` dependency.
+
+**Prerendering**: this is a CSR React app that gets snapshotted to static HTML per route at build time (not a full SSR server — there's no request-time rendering, no Node server in production). `npm run build` runs four steps: `tsc -b` → `vite build` (client bundle → `dist/`) → `vite build --ssr src/entry-server.tsx --outDir dist-ssr` (a Node-targeted SSR bundle) → `node scripts/prerender.mjs`, which imports the SSR bundle, calls `render(path)` for each path in `scripts/routes.mjs`'s `STATIC_PATHS`, and writes the result into `dist/<path>/index.html` (root `/` overwrites `dist/index.html` directly), then deletes `dist-ssr/`. The `<SEO>` component's `<title>`/`<meta>`/`<link>` tags render in-place in the SSR output (there's no real `<head>` in the React tree to hoist them into, since `index.html`'s `<head>` is static markup outside React's mount point) — `prerender.mjs` extracts them with a regex and splices them into the template's real `<head>`, after first stripping the template's static `<title>`/`<meta name="description">` to avoid duplicates. `scripts/routes.mjs` is the single source of truth for which paths get prerendered; `scripts/generate-sitemap.mjs` (runs as the `prebuild` npm lifecycle script) reads the same list.
+- `src/components/theme-provider.tsx`'s `getInitialTheme` guards on `typeof window === 'undefined'` to default to `'dark'` during prerendering (`localStorage` doesn't exist in Node) — this matches `index.html`'s inline dark-mode-by-default script, so first-time visitors see no mismatch; returning visitors who saved `'light'` may see a one-frame theme-toggle icon flicker on hydration (client state overrides the prerendered guess), a known and accepted minor cosmetic tradeoff.
+- `src/main.tsx` uses `hydrateRoot` (not `createRoot`) so the client attaches to the prerendered DOM instead of discarding and re-rendering it.
+- When adding a new static route, add it to `STATIC_PATHS` in `scripts/routes.mjs` — both prerendering and the sitemap pick it up automatically.
 
 **Components** are split by origin, not just co-located:
 - `src/components/ui/` — shadcn/ui-style primitives only (`button`, `input`, `separator`, `breadcrumb`, `alert-dialog`, `carousel`), generated per `components.json` (style: `new-york`, no RSC, Tailwind CSS variables, `lucide-react` icons). `button.tsx`'s `buttonVariants` bakes in the site's hover/entrance animation classes (`hover:scale-110`, `animate-fadeInUp`, etc.) so every `<Button>` gets them for free — don't re-add them via a page-local className.
@@ -43,4 +46,4 @@ Use the `@/` path alias (mapped to `src/`, configured in `vite.config.ts` and `t
 
 **Project data**: `portfolio.tsx` hardcodes project lists (work/open-source/volunteering/academic) as inline arrays of `{title, description, image?, link}`, rendered through a page-local `ProjectCard`/`ProjectCarousel` (not a shared component — `image` is optional and falls back to a `GraduationCap` icon for entries like the academic carousel that have no screenshot). Images are static imports from `src/assets/projects/`.
 
-**Deployment**: `Dockerfile` is a two-stage build (pnpm build → `serve -s dist` on port 25568). `dist/` is committed/present in the repo tree as a build artifact — don't hand-edit files under `dist/`, they're regenerated by `npm run build`.
+**Deployment**: `Dockerfile` is a two-stage build (pnpm build → `serve dist` on port 25568). Note: no `-s`/`--single` flag — that flag rewrites *every* request to the root `index.html`, which would silently defeat prerendering (confirmed by curling a `-s`-served build: every route returned the homepage's `<title>`). Since every valid route now has its own prerendered `dist/<path>/index.html`, plain `serve`'s default directory-index resolution serves the right file per route and returns a real `404` for unknown paths — there's no remaining client-only route that needs SPA-fallback rewriting. If a genuinely dynamic (non-prerenderable) route is ever added back, `-s` (or a targeted rewrite rule) would need to be reintroduced. `dist/` is committed/present in the repo tree as a build artifact — don't hand-edit files under `dist/`, they're regenerated by `npm run build`. `dist-ssr/` is a transient build artifact (gitignored) deleted automatically at the end of the prerender step.

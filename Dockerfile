@@ -10,4 +10,4 @@ FROM node:22-alpine
 RUN npm i -g serve
 COPY --from=builder /app/dist /app/dist
 EXPOSE 25568
-CMD ["serve", "-s", "/app/dist", "-l", "25568"]
+CMD ["serve", "/app/dist", "-l", "25568"]

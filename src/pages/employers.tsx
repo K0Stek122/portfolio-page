@@ -2,7 +2,7 @@ import React from 'react';
 import H1 from '../components/typographyh1';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { FileUser, Globe, Code, BookOpenText } from 'lucide-react';
+import { FileUser, Globe, Code } from 'lucide-react';
 import LinImage from '../assets/LinkedIn.jpg'
 import ContactDialog from '../components/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
@@ -82,15 +82,6 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                     </div>
 
                     <div className="flex flex-row flex-wrap items-center justify-center gap-4">
-                        <Button
-                            variant="default"
-                            size="lg"
-                            onClick={() => navigate('/blog')}
-                            >
-                                <BookOpenText data-icon="inline-start" />
-                                Blog
-                        </Button>
-
                         <ContactDialog triggerLabel="Contact Me" />
                     </div>
                 </div>
