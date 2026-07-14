@@ -1,9 +1,10 @@
 import React from 'react';
 import H1 from '../components/typographyh1';
+import H2 from '../components/typographyh2';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { FileUser, Globe, Code } from 'lucide-react';
-import LinImage from '../assets/LinkedIn.jpg'
+import LinImage from '../assets/LinkedIn_avif.avif'
 import ContactDialog from '../components/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
 import P from '../components/typographyp';
@@ -46,7 +47,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
             <div className="animate-fadeInUp flex flex-col md:flex-row items-center justify-center gap-4 v-screen w-full max-w-4xl">
                 <img
                     src={LinImage}
-                    alt="Description of the image"
+                    alt="Kamil Kostrzewa"
                     className="rounded shadow-lg rounded-full h-24 md:h-56"
                 />
                 <div className="flex flex-col items-center justify-center gap-4">
@@ -88,13 +89,13 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
             </div>
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
             <div className="animate-fadeInUp flex flex-col items-center w-screen max-w-5/6 md:max-w-1/2">
-                <H1>About Me</H1>
+                <H2>About Me</H2>
                 <P>
                     I'm a software engineer who builds and improves real-world systems for businesses — from internal tools and data workflows to reliable websites.
                     I focus on clear communication so that your systems are faster, easier to maintain, and easier to scale. You can view selected projects on GitHub.
                 </P>
 
-                <H1>Freelance & Contract Work</H1>
+                <H2>Freelance & Contract Work</H2>
                 <P>
                     I work with small and medium-sized businesses that need an extra pair of hands.
                     I focus on practical solutions that save time and make day-to-day work easier.

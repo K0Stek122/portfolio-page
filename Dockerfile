@@ -1,5 +1,6 @@
 FROM node:22-alpine AS builder
 WORKDIR /app
+RUN apk add --no-cache git
 COPY package.json pnpm-lock.yaml ./
 RUN corepack enable && corepack prepare pnpm@10 --activate
 RUN pnpm i --frozen-lockfile
