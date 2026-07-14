@@ -21,6 +21,7 @@ export default function SpreadsheetAutomationPage() {
                 title="Spreadsheet Automation — Kamil Kostrzewa"
                 description="Automation specialists for hire. Get the IT help you need to eliminate repetitive admin work."
                 path="/spreadsheet-automation"
+                breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Spreadsheet Automation', path: '/spreadsheet-automation' }]}
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">

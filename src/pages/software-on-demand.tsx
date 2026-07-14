@@ -21,6 +21,7 @@ export default function SoftwareOnDemandPage() {
                 title="Software-on-Demand — Kamil Kostrzewa"
                 description="Software development specialists for hire. Create custom tools at a competitive price."
                 path="/software-on-demand"
+                breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Software-on-Demand', path: '/software-on-demand' }]}
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">

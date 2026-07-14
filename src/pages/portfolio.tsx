@@ -196,6 +196,7 @@ export default function PortfolioPage() {
                 title="Portfolio — Kamil Kostrzewa"
                 description="Selected work, open source contributions, and volunteering projects by software engineer Kamil Kostrzewa."
                 path="/employers/portfolio"
+                breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Portfolio', path: '/employers/portfolio' }]}
             />
             <Breadcrumb className="animate-fadeInUp hover:text-foreground">
                 <BreadcrumbList>

@@ -43,7 +43,7 @@ Both `package-lock.json` and `pnpm-lock.yaml` are present, but the `Dockerfile` 
 
 Use the `@/` path alias (mapped to `src/`, configured in `vite.config.ts` and `tsconfig.app.json`) for new imports; existing page files under `src/pages/` use relative `../` imports instead — match whichever convention the file you're editing already uses.
 
-`seo.tsx` renders `og:image`/`twitter:image` pointing at `src/assets/signature.png` (a fixed default for every page — there's no per-page override prop). If a page ever wants a more specific share image, add an optional `image` prop to `SEOProps` rather than hardcoding a second default.
+`seo.tsx` renders `og:image`/`twitter:image` pointing at `src/assets/signature.png` (a fixed default for every page — there's no per-page override prop). If a page ever wants a more specific share image, add an optional `image` prop to `SEOProps` rather than hardcoding a second default. It also renders two opt-in JSON-LD `<script>` blocks: `includePerson` (only set on `/`, in `employers.tsx`) emits a `Person` schema using the LinkedIn headshot as `image`; `breadcrumbs` (an ordered `{name, path}[]`) emits a `BreadcrumbList` schema — pass it on every non-root page and keep it in exact sync with that page's visible `<Breadcrumb>` trail (Google expects the two to match).
 
 **Styling**: Tailwind CSS v4 via `@tailwindcss/vite` plugin, with `@theme inline` in `src/index.css` (CSS-first config) alongside a legacy `tailwind.config.ts` (defines the `fadeInUp` entrance animation used with the `animate-fadeInUp` class throughout page components, plus an unused `testpink` color). Dark, slate-800-based color scheme is applied per-page rather than through a global dark mode toggle.
 
