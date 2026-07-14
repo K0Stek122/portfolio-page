@@ -11,7 +11,7 @@ import SEO from "../components/seo";
 import xdumpImage from ".././assets/projects/xdump.png";
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif";
 import kindleImage from ".././assets/projects/kindle-extractor.png";
-import cbImage from ".././assets/projects/cb.png";
+import cbImage from ".././assets/projects/cb_avif.avif";
 import ugImage from ".././assets/projects/ug.png"
 import wjbImage from ".././assets/projects/wjb.png"
 import pandasImage from ".././assets/projects/pandas.png"
@@ -21,8 +21,8 @@ import filesplitterImage from ".././assets/projects/filesplitter.jpg"
 import wordlistImage from ".././assets/projects/wordlist.png"
 import overlayImage from ".././assets/projects/pygameoverlay.png"
 import rpiImage from ".././assets/projects/rpi.png"
-import whahImage from ".././assets/projects/whah.png"
-import oxfamImage from ".././assets/projects/oxfam.png"
+import whahImage from ".././assets/projects/whah_avif.avif"
+import oxfamImage from ".././assets/projects/oxfam_avif.avif"
 import culturesentwinedImage from ".././assets/projects/culturesentwined.png"
 import bachelorDissertationImage from ".././assets/projects/dissertation.png"
 
