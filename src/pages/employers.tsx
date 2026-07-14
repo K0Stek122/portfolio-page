@@ -111,7 +111,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
                     <Button onClick={() => navigate('/spreadsheet-automation')}>Spreadsheet Automation</Button>
                     <Button onClick={() => navigate('/software-on-demand')}>Software-on-Demand</Button>
-                    <Button>Website Development</Button>
+                    <Button onClick={() => navigate('/website-development')}>Website Development</Button>
                 </div>
             </div>
         </div>

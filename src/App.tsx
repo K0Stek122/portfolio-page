@@ -3,6 +3,7 @@ import EmployersPage from './pages/employers';
 import PortfolioPage from './pages/portfolio';
 import SpreadsheetAutomationPage from './pages/spreadsheet-automation';
 import SoftwareOnDemandPage from './pages/software-on-demand';
+import WebsiteDevelopmentPage from './pages/website-development';
 import { ThemeProvider } from './components/theme-provider';
 import ThemeToggle from './components/theme-toggle';
 import './App.css'
@@ -16,6 +17,7 @@ function App() {
             <Route path="/employers/portfolio" element={<PortfolioPage />} />
             <Route path="/spreadsheet-automation" element={<SpreadsheetAutomationPage />} />
             <Route path="/software-on-demand" element={<SoftwareOnDemandPage />} />
+            <Route path="/website-development" element={<WebsiteDevelopmentPage />} />
         </Routes>
         <ThemeToggle />
     </ThemeProvider>
