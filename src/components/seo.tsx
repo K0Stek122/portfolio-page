@@ -35,7 +35,7 @@ export default function SEO({ title, description, path, type = 'website', includ
         name: SITE_NAME,
         url,
         image: `${SITE_URL}${headshotImage}`,
-        jobTitle: 'IT Engineer',
+        jobTitle: 'Software Engineer',
         sameAs: [
             'https://www.linkedin.com/in/kamil-kostek/',
             'https://github.com/K0Stek122',

@@ -19,7 +19,7 @@ export default function SoftwareOnDemandPage() {
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
                 title="Software-on-Demand — Kamil Kostrzewa"
-                description="Software development specialists for hire. Create custom tools at a competitive price."
+                description="Hire software development specialists on demand — harden AI-generated code, prototype your next idea, or bring in dedicated engineering help."
                 path="/software-on-demand"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Software-on-Demand', path: '/software-on-demand' }]}
             />

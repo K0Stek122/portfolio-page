@@ -194,7 +194,7 @@ export default function PortfolioPage() {
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background gap-6 py-8 px-4">
             <SEO
                 title="Portfolio — Kamil Kostrzewa"
-                description="Selected work, open source contributions, and volunteering projects by software engineer Kamil Kostrzewa."
+                description="Explore Kamil Kostrzewa's portfolio: professional work, open source contributions, volunteering projects, and academic research in software engineering."
                 path="/employers/portfolio"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Portfolio', path: '/employers/portfolio' }]}
             />
