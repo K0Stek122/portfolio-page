@@ -19,7 +19,7 @@ export default function SpreadsheetAutomationPage() {
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
                 title="Spreadsheet Automation — Kamil Kostrzewa"
-                description="Automation specialists for hire. Get the IT help you need to eliminate repetitive admin work."
+                description="Eliminate repetitive admin work with expert spreadsheet automation, database engineering, business intelligence, and GDPR compliance support."
                 path="/spreadsheet-automation"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Spreadsheet Automation', path: '/spreadsheet-automation' }]}
             />
