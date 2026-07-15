@@ -19,7 +19,7 @@ export default function WebsiteDevelopmentPage() {
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
                 title="Website Development — Kamil Kostrzewa"
-                description="Website development specialists for hire — build a site from scratch and boost your search rankings."
+                description="Website development for hire — build a site from scratch and boost your search rankings."
                 path="/website-development"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Website Development', path: '/website-development' }]}
                 service={{ name: 'Website Development', serviceType: 'Website Design & Development' }}
