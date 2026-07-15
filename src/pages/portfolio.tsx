@@ -39,7 +39,7 @@ function ProjectCard({ title, description, image, link }: Project) {
         <div className="bg-card rounded-lg p-4 flex flex-col gap-3 h-80">
             <div className="h-40 w-full overflow-hidden rounded-lg shrink-0 bg-muted flex items-center justify-center">
                 {image ? (
-                    <img src={image} alt={title} className="h-full w-full object-cover" />
+                    <img src={image} alt={title} loading="lazy" className="h-full w-full object-cover" />
                 ) : (
                     <GraduationCap className="size-12 text-muted-foreground" />
                 )}

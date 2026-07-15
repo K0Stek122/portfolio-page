@@ -47,7 +47,10 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <img
                     src={LinImage}
                     alt="Kamil Kostrzewa"
-                    className="rounded shadow-lg rounded-full h-24 md:h-56"
+                    width={2367}
+                    height={2366}
+                    fetchPriority="high"
+                    className="rounded shadow-lg rounded-full size-24 md:size-56 object-cover"
                 />
                 <div className="flex flex-col items-center justify-center gap-4">
                     <H1>Kamil Kostrzewa</H1>

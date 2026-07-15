@@ -4,6 +4,8 @@ import headshotImage from '../assets/LinkedIn_avif.avif';
 const SITE_URL = 'https://kostek.uk';
 const SITE_NAME = 'Kamil Kostrzewa';
 const DEFAULT_IMAGE = `${SITE_URL}${signatureImage}`;
+const DEFAULT_IMAGE_WIDTH = 1200;
+const DEFAULT_IMAGE_HEIGHT = 470;
 
 interface BreadcrumbEntry {
     name: string;
@@ -92,10 +94,14 @@ export default function SEO({ title, description, path, type = 'website', includ
             <meta property="og:description" content={description} />
             <meta property="og:url" content={url} />
             <meta property="og:image" content={DEFAULT_IMAGE} />
+            <meta property="og:image:width" content={String(DEFAULT_IMAGE_WIDTH)} />
+            <meta property="og:image:height" content={String(DEFAULT_IMAGE_HEIGHT)} />
+            <meta property="og:image:alt" content={SITE_NAME} />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={DEFAULT_IMAGE} />
+            <meta name="twitter:image:alt" content={SITE_NAME} />
             <script type="application/ld+json">{toJsonLd(websiteLd)}</script>
             {personLd && <script type="application/ld+json">{toJsonLd(personLd)}</script>}
             {breadcrumbLd && <script type="application/ld+json">{toJsonLd(breadcrumbLd)}</script>}
