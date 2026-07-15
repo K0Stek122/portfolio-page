@@ -8,23 +8,23 @@ import H2 from "../components/typographyh2";
 import P from "../components/typographyp";
 import SEO from "../components/seo";
 
-import xdumpImage from ".././assets/projects/xdump.png";
+import xdumpImage from ".././assets/projects/xdump_avif.avif";
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif";
-import kindleImage from ".././assets/projects/kindle-extractor.png";
+import kindleImage from ".././assets/projects/kindle-extractor_avif.avif";
 import cbImage from ".././assets/projects/cb_avif.avif";
-import ugImage from ".././assets/projects/ug.png"
-import wjbImage from ".././assets/projects/wjb.png"
-import pandasImage from ".././assets/projects/pandas.png"
-import autokeyImage from ".././assets/projects/autokey.png"
+import ugImage from ".././assets/projects/ug_avif.avif"
+import wjbImage from ".././assets/projects/wjb_avif.avif"
+import pandasImage from ".././assets/projects/pandas_avif.avif"
+import autokeyImage from ".././assets/projects/autokey_avif.avif"
 import casthudImage from ".././assets/projects/casthud.gif"
-import filesplitterImage from ".././assets/projects/filesplitter.jpg"
-import wordlistImage from ".././assets/projects/wordlist.png"
-import overlayImage from ".././assets/projects/pygameoverlay.png"
-import rpiImage from ".././assets/projects/rpi.png"
+import filesplitterImage from ".././assets/projects/filesplitter_avif.avif"
+import wordlistImage from ".././assets/projects/wordlist_avif.avif"
+import overlayImage from ".././assets/projects/pygameoverlay_avif.avif"
+import rpiImage from ".././assets/projects/rpi_avif.avif"
 import whahImage from ".././assets/projects/whah_avif.avif"
 import oxfamImage from ".././assets/projects/oxfam_avif.avif"
-import culturesentwinedImage from ".././assets/projects/culturesentwined.png"
-import bachelorDissertationImage from ".././assets/projects/dissertation.png"
+import culturesentwinedImage from ".././assets/projects/culturesentwined_avif.avif"
+import bachelorDissertationImage from ".././assets/projects/dissertation_avif.avif"
 
 interface Project {
     title: string;
