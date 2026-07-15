@@ -28,7 +28,16 @@ function urlEntry(loc, lastmod) {
     return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
 }
 
-const entries = STATIC_ROUTES.map(({ path, file }) => urlEntry(`${SITE_URL}${path}`, lastCommitDate(file) ?? today));
+// External pages hosted outside this app (e.g. the Jekyll-based blog) that still belong in this
+// site's sitemap. No local file to derive `lastmod` from via git, so these use today's date.
+const EXTERNAL_URLS = [
+    'https://kostek.uk/ambition/',
+];
+
+const entries = [
+    ...STATIC_ROUTES.map(({ path, file }) => urlEntry(`${SITE_URL}${path}`, lastCommitDate(file) ?? today)),
+    ...EXTERNAL_URLS.map(url => urlEntry(url, today)),
+];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${entries.join('\n')}\n</urlset>\n`;
 

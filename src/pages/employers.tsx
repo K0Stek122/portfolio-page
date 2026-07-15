@@ -3,7 +3,7 @@ import H1 from '../components/typographyh1';
 import H2 from '../components/typographyh2';
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { FileUser, Globe, Code } from 'lucide-react';
+import { FileUser, Globe, Code, Newspaper } from 'lucide-react';
 import LinImage from '../assets/LinkedIn_avif.avif'
 import ContactDialog from '../components/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
@@ -85,6 +85,14 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
 
                     <div className="flex flex-row flex-wrap items-center justify-center gap-4">
                         <ContactDialog triggerLabel="Contact Me" />
+
+                        <Button
+                            variant="default"
+                            size="lg"
+                            onClick={() => handleExternalLink("https://kostek.uk/ambition/")}>
+                                <Newspaper data-icon="inline-start" />
+                                Blog
+                        </Button>
                     </div>
                 </div>
             </div>
