@@ -34,7 +34,7 @@ interface Project {
 }
 
 function ProjectCard({ title, description, image, link }: Project) {
-    const handleExternalLink = (url: string) => window.open(url, "_blank");
+    const handleExternalLink = (url: string) => window.open(url, "_blank", "noopener,noreferrer");
     return (
         <div className="bg-card rounded-lg p-4 flex flex-col gap-3 h-80">
             <div className="h-40 w-full overflow-hidden rounded-lg shrink-0 bg-muted flex items-center justify-center">
@@ -250,7 +250,7 @@ export default function PortfolioPage() {
                 <Button
                     variant="secondary"
                     className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
-                    onClick={() => window.open("https://github.com/K0Stek122", "_blank")}
+                    onClick={() => window.open("https://github.com/K0Stek122", "_blank", "noopener,noreferrer")}
                 >
                     <CodeIcon data-icon="inline-start" aria-hidden={false} />
                     GitHub
