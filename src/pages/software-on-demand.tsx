@@ -22,6 +22,7 @@ export default function SoftwareOnDemandPage() {
                 description="Hire software development specialists on demand — harden AI-generated code, prototype your next idea, or bring in dedicated engineering help."
                 path="/software-on-demand"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Software-on-Demand', path: '/software-on-demand' }]}
+                service={{ name: 'Software-on-Demand', serviceType: 'Custom Software Development' }}
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">

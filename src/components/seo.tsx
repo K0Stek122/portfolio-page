@@ -10,6 +10,11 @@ interface BreadcrumbEntry {
     path: string;
 }
 
+interface ServiceEntry {
+    name: string;
+    serviceType: string;
+}
+
 interface SEOProps {
     title: string;
     description: string;
@@ -19,6 +24,8 @@ interface SEOProps {
     includePerson?: boolean;
     /** Mirrors the visible <Breadcrumb> trail on the page, in order, starting with Home. */
     breadcrumbs?: BreadcrumbEntry[];
+    /** Renders a Service JSON-LD block. Set on service-landing pages (spreadsheet-automation, software-on-demand, website-development). */
+    service?: ServiceEntry;
 }
 
 /** Guards against a stray "</script" inside JSON content from prematurely closing the tag. */
@@ -26,8 +33,29 @@ function toJsonLd(data: unknown): string {
     return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
-export default function SEO({ title, description, path, type = 'website', includePerson = false, breadcrumbs }: SEOProps) {
+export default function SEO({ title, description, path, type = 'website', includePerson = false, breadcrumbs, service }: SEOProps) {
     const url = `${SITE_URL}${path}`;
+
+    const websiteLd = {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: SITE_NAME,
+        url: SITE_URL,
+    };
+
+    const serviceLd = service ? {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: service.name,
+        serviceType: service.serviceType,
+        description,
+        url,
+        provider: {
+            '@type': 'Person',
+            name: SITE_NAME,
+            url: SITE_URL,
+        },
+    } : null;
 
     const personLd = includePerson ? {
         '@context': 'https://schema.org',
@@ -68,8 +96,10 @@ export default function SEO({ title, description, path, type = 'website', includ
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
             <meta name="twitter:image" content={DEFAULT_IMAGE} />
+            <script type="application/ld+json">{toJsonLd(websiteLd)}</script>
             {personLd && <script type="application/ld+json">{toJsonLd(personLd)}</script>}
             {breadcrumbLd && <script type="application/ld+json">{toJsonLd(breadcrumbLd)}</script>}
+            {serviceLd && <script type="application/ld+json">{toJsonLd(serviceLd)}</script>}
         </>
     );
 }

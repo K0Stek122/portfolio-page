@@ -8,7 +8,7 @@ import LinImage from '../assets/LinkedIn_avif.avif'
 import ContactDialog from '../components/contact-dialog';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList } from '../components/ui/breadcrumb';
 import P from '../components/typographyp';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SEO from '../components/seo';
 
 /*
@@ -23,8 +23,6 @@ interface EmployersPageProps {
 }
 
 const EmployersPage: React.FC<EmployersPageProps> = () => {
-    const navigate = useNavigate();
-
     const handleExternalLink = (url: string) => {
         window.open(url, '_blank');
     };
@@ -33,7 +31,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background gap-6 py-8 px-4">
             <SEO
                 title="Kamil Kostrzewa — Software Engineer"
-                description="Kamil Kostrzewa is a software engineer building real-world systems for businesses — internal tools, data workflows, and reliable, easy-to-maintain websites."
+                description="Kamil Kostrzewa is a software engineer who improves systems — internal tools, data workflows, and reliable websites."
                 path="/"
                 includePerson
             />
@@ -76,10 +74,12 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                         <Button
                             variant="default"
                             size="lg"
-                            onClick={() => navigate('/employers/portfolio')}
+                            asChild
                             >
-                                <Code data-icon="inline-start" />
-                                Portfolio
+                                <Link to="/employers/portfolio">
+                                    <Code data-icon="inline-start" />
+                                    Portfolio
+                                </Link>
                         </Button>
                     </div>
 
@@ -117,9 +117,9 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <P>Services: </P>
 
                 <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
-                    <Button onClick={() => navigate('/spreadsheet-automation')}>Spreadsheet Automation</Button>
-                    <Button onClick={() => navigate('/software-on-demand')}>Software-on-Demand</Button>
-                    <Button onClick={() => navigate('/website-development')}>Website Development</Button>
+                    <Button asChild><Link to="/spreadsheet-automation">Spreadsheet Automation</Link></Button>
+                    <Button asChild><Link to="/software-on-demand">Software-on-Demand</Link></Button>
+                    <Button asChild><Link to="/website-development">Website Development</Link></Button>
                 </div>
             </div>
         </div>
