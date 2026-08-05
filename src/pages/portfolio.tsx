@@ -1,26 +1,28 @@
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from "../components/ui/breadcrumb";
-import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from "../components/ui/carousel";
 import { Separator } from "../components/ui/separator";
 import { Button } from "../components/ui/button";
-import { CodeIcon, GraduationCap } from "lucide-react";
+import {
+    CodeIcon,
+    GraduationCap,
+    GitPullRequest,
+    Server,
+    BookOpen,
+    Binary,
+    Grid3x3,
+    AppWindow,
+    Scissors,
+    KeyRound,
+    Layers,
+    type LucideIcon,
+} from "lucide-react";
 import H1 from "../components/typographyh1";
 import H2 from "../components/typographyh2";
 import P from "../components/typographyp";
 import SEO from "../components/seo";
 
-import xdumpImage from ".././assets/projects/xdump_avif.avif";
-import conwayImage from ".././assets/projects/c-conway-game-of-life.gif";
-import kindleImage from ".././assets/projects/kindle-extractor_avif.avif";
 import cbImage from ".././assets/projects/cb_avif.avif";
 import ugImage from ".././assets/projects/ug_avif.avif"
 import wjbImage from ".././assets/projects/wjb_avif.avif"
-import pandasImage from ".././assets/projects/pandas_avif.avif"
-import autokeyImage from ".././assets/projects/autokey_avif.avif"
-import casthudImage from ".././assets/projects/casthud.gif"
-import filesplitterImage from ".././assets/projects/filesplitter_avif.avif"
-import wordlistImage from ".././assets/projects/wordlist_avif.avif"
-import overlayImage from ".././assets/projects/pygameoverlay_avif.avif"
-import rpiImage from ".././assets/projects/rpi_avif.avif"
 import whahImage from ".././assets/projects/whah_avif.avif"
 import oxfamImage from ".././assets/projects/oxfam_avif.avif"
 import culturesentwinedImage from ".././assets/projects/culturesentwined_avif.avif"
@@ -28,24 +30,27 @@ import bachelorDissertationImage from ".././assets/projects/dissertation_avif.av
 
 interface Project {
     title: string;
+    subtitle?: string;
     description: string;
     image?: string;
+    icon?: LucideIcon;
     link: string;
 }
 
-function ProjectCard({ title, description, image, link }: Project) {
+function ProjectCard({ title, subtitle, description, image, icon: Icon, link }: Project) {
     const handleExternalLink = (url: string) => window.open(url, "_blank", "noopener,noreferrer");
     return (
-        <div className="bg-card rounded-lg p-4 flex flex-col gap-3 h-80">
-            <div className="h-40 w-full overflow-hidden rounded-lg shrink-0 bg-muted flex items-center justify-center">
-                {image ? (
-                    <img src={image} alt={title} loading="lazy" className="h-full w-full object-cover" />
-                ) : (
-                    <GraduationCap className="size-12 text-muted-foreground" />
-                )}
-            </div>
-            <p className="text-card-foreground font-bold line-clamp-1">{title}</p>
-            <p className="text-muted-foreground text-sm line-clamp-2 flex-1">{description}</p>
+        <div className="animate-fadeInUp flex flex-col gap-2 bg-card text-card-foreground border border-border rounded-lg p-4">
+            {image ? (
+                <img src={image} alt={title} loading="lazy" className="h-[9.6rem] w-full object-cover rounded-md" />
+            ) : (
+                <div className="flex items-center justify-center size-8 rounded-md bg-primary/10 text-primary">
+                    {Icon ? <Icon className="size-4" /> : <GraduationCap className="size-4" />}
+                </div>
+            )}
+            <p className="font-bold line-clamp-1">{title}</p>
+            {subtitle && <p className="font-bold text-sm text-white/75 line-clamp-1">{subtitle}</p>}
+            <p className="text-muted-foreground text-sm line-clamp-3 flex-1">{description}</p>
             <Button
                 size="sm"
                 variant="secondary"
@@ -58,19 +63,13 @@ function ProjectCard({ title, description, image, link }: Project) {
     );
 }
 
-function ProjectCarousel({ projects, itemClassName = "md:basis-1/2 lg:basis-1/3" }: { projects: Project[]; itemClassName?: string }) {
+function ProjectGrid({ projects }: { projects: Project[] }) {
     return (
-        <Carousel className="w-full px-12" opts={{ align: "start" }}>
-            <CarouselContent>
-                {projects.map((project, index) => (
-                    <CarouselItem key={index} className={itemClassName}>
-                        <ProjectCard {...project} />
-                    </CarouselItem>
-                ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-        </Carousel>
+        <div className="animate-fadeInUp grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {projects.map((project, index) => (
+                <ProjectCard key={index} {...project} />
+            ))}
+        </div>
     );
 }
 
@@ -78,20 +77,23 @@ export default function PortfolioPage() {
 
     const work_projects: Project[] = [
         {
-            title: "Database Engineer",
-            description: "Engineered Change Birmingham's database for storing and retrieving client data.",
+            title: "Change Birmingham",
+            subtitle: "Role: Database Engineer",
+            description: "Engineered Postgresql Database + Full IT setup.",
             image: cbImage,
             link: "https://changebrieftherapy.org",
         },
         {
-            title: "1st Line IT Support",
-            description: "IT Support at We Job Box with Microsoft Azure and Entra.",
+            title: "We Job Box",
+            subtitle: "Role: IT Support",
+            description: "1st Line IT Support in the Microsoft ecosystem.",
             image: wjbImage,
             link: "https://www.wejobbox.com",
         },
         {
-            title: "Data Automation Engineer",
-            description: "Automated data collection and analysis for Cultures Entwined",
+            title: "Cultures Entwined",
+            subtitle: "Role: Data Automation",
+            description: "Utilised Excel and UI/UX Principles to develop a custom solution.",
             image: culturesentwinedImage,
             link: "https://culturesentwined.co.uk"
         }
@@ -101,80 +103,83 @@ export default function PortfolioPage() {
         {
             title: "Pandas Contribution",
             description: "Triage'd and fixed bug reports in the pandas data analysis tool.",
-            image: pandasImage,
+            icon: GitPullRequest,
             link: "https://pandas.pydata.org/",
         },
         {
             title: "AutoKey Contribution",
             description: "Fixed bug reports in the autokey automation tool.",
-            image: autokeyImage,
+            icon: GitPullRequest,
             link: "https://autokey.github.io/",
         },
         {
             title: "Raspberry PI Self-Hosting",
             description: "Server hosting with RPI using only FOSS and self-made software.",
-            image: rpiImage,
+            icon: Server,
             link: "https://www.kostek.uk",
         },
         {
             title: "Kindle Quote Extractor",
             description: "Engineered a Python tool for automating quote extraction. Allows for output to JSON and Markdown.",
-            image: kindleImage,
+            icon: BookOpen,
             link: "https://github.com/K0Stek122/kindle-extractor",
         },
         {
             title: "xdump: Hexdump utility tool",
             description: "Engineered a Pure-C tool for analysing raw binary data of any file.",
-            image: xdumpImage,
+            icon: Binary,
             link: "https://github.com/K0Stek122/xdump",
         },
         {
             title: "Conway's Game of Life",
             description: "Designed Conway's game of life in Pure-C. Utilises mathematics and computation theory to implement a Pushdown Automaton.",
-            image: conwayImage,
+            icon: Grid3x3,
             link: "https://github.com/K0Stek122/c-conway-game-of-life",
         },
         {
             title: "CastHud: C++ GUI overlay tool",
             description: "Designed a GUI overlay tool letting users design any user interface on top of another application.",
-            image: casthudImage,
+            icon: AppWindow,
             link: "https://github.com/K0Stek122/CastHud",
         },
         {
             title: "File Splitter and Unsplitter",
             description: "Engineered in pure C.",
-            image: filesplitterImage,
+            icon: Scissors,
             link: "https://github.com/K0Stek122/c-file-splitter",
         },
         {
             title: "Hatch",
             description: "Wordlist generation for Cyber Security.",
-            image: wordlistImage,
+            icon: KeyRound,
             link: "https://github.com/K0Stek122/hatch"
         },
         {
             title: "PyOverlay",
             description: "Tool for modifying any app's UI.",
-            image: overlayImage,
+            icon: Layers,
             link: "https://github.com/K0Stek122/Python-pygame-overlay"
         }
     ];
 
     const volunteering_projects: Project[] = [
         {
-            title: "Software Engineer",
-            description: "Engineered full-stack AI-Driven software for 'Unify Giving'.",
+            title: "Unify Giving",
+            subtitle: "Role: Software Engineer",
+            description: "Engineered full-stack AI-Driven software.",
             image: ugImage,
             link: "https://unifygiving.com/",
         },
         {
-            title: "IT Team Lead",
-            description: "IT Team Lead at We Hold A Hand. Handling IT Support and Web Dev.",
+            title: "We Hold a Hand",
+            subtitle: "Role: IT Team Lead",
+            description: "Managing IT Support, Web Dev, and internal data automation.",
             image: whahImage,
             link: "https://weholdahand.org/",
         },
         {
-            title: "Book Shop Technician",
+            title: "Unify Giving",
+            subtitle: "Role: Book Shop Technician",
             description: "Technician at Oxfam Rugby's Local bookshop.",
             image: oxfamImage,
             link: "https://www.oxfam.org.uk/",
@@ -219,28 +224,28 @@ export default function PortfolioPage() {
 
             <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl">
                 <H2>Work Experience</H2>
-                <ProjectCarousel projects={work_projects} />
+                <ProjectGrid projects={work_projects} />
             </div>
 
             <Separator className="animate-fadeInUp w-full max-w-5xl" />
 
             <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl">
                 <H2>Open Source</H2>
-                <ProjectCarousel projects={foss_projects} />
+                <ProjectGrid projects={foss_projects} />
             </div>
 
             <Separator className="animate-fadeInUp w-full max-w-5xl" />
 
             <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl pb-8">
                 <H2>Volunteering</H2>
-                <ProjectCarousel projects={volunteering_projects} />
+                <ProjectGrid projects={volunteering_projects} />
             </div>
 
             <Separator className="animate-fadeInUp w-full max-w-5xl" />
 
             <div className="animate-fadeInUp flex flex-col gap-4 w-full max-w-5xl pb-8">
                 <H2>Academic</H2>
-                <ProjectCarousel projects={academic_projects} itemClassName="basis-full md:basis-1/2 lg:basis-1/3" />
+                <ProjectGrid projects={academic_projects} />
             </div>
 
             <Separator className="animate-fadeInUp w-full max-w-5xl" />
