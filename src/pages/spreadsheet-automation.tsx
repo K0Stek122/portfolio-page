@@ -22,10 +22,10 @@ const faqs = [
     },
     {
         question: 'What is your process for designing a system?',
-        answer: "Everything starts with requirements analysis, an interview where we get details of what we can do for you. We will then implement the system utilising Agile principles."
+        answer: "Everything starts with requirements analysis, an interview where we get details of what we can do for you. We will then implement the system utilising Agile principles. We will ask for feedback and steer course accordingly after every major feature is implemented."
     },
     {
-        question: 'Can you help with GDPR compliance for our data?',
+        question: '',
         answer: 'Yes — GDPR compliance review and remediation is one of the core services I offer, alongside the automation and database work itself.'
     },
 ];
@@ -78,14 +78,14 @@ export default function SpreadsheetAutomationPage() {
                 </div>
             </div>
 
-            <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-12 text-center px-4">
                 <H2 className="animate-fadeInUp">Ready to eliminate the busywork?</H2>
                 <CtaButtons />
             </div>
 
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
 
-            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 py-16 px-4">
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 pt-[2.4rem] pb-16 px-4">
                 <H2 className="animate-fadeInUp">Frequently Asked Questions</H2>
                 <div className="animate-fadeInUp flex flex-col gap-4 w-full">
                     {faqs.map((faq) => (

@@ -69,14 +69,14 @@ export default function WebsiteDevelopmentPage() {
                 </div>
             </div>
 
-            <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-12 text-center px-4">
                 <H2 className="animate-fadeInUp">Ready to launch your website?</H2>
                 <CtaButtons />
             </div>
 
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
 
-            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 py-16 px-4">
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 pt-[2.4rem] pb-16 px-4">
                 <H2 className="animate-fadeInUp">Frequently Asked Questions</H2>
                 <div className="animate-fadeInUp flex flex-col gap-4 w-full">
                     {faqs.map((faq) => (
