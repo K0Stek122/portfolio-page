@@ -16,9 +16,18 @@ const services = [
 ];
 
 const faqs = [
-    { question: 'Do you build from scratch or can you work from an existing design?', answer: 'Both — I can build a site from scratch at a competitive price, or bring your Figma files or wireframes to life exactly as designed.' },
-    { question: 'Can you improve the SEO of a site I already have?', answer: 'Yes — SEO optimisation for existing sites is one of the core services, aimed at improving your rankings on Google and Bing.' },
-    { question: 'My site is old and clunky — can it be modernised without a full rebuild?', answer: 'In most cases yes — I can modernise an old-school site into a fast, modern web app while keeping what already works.' },
+    {
+        question: 'Do you build from scratch or can you work from an existing design?',
+        answer: 'Both — We can build a site from scratch at a competitive price, or bring your Figma files or wireframes to life exactly as designed.'
+    },
+    {
+        question: 'Can you improve the SEO of a site I already have?',
+        answer: 'Yes — SEO optimisation for existing sites is one of the core services.'
+    },
+    {
+        question: 'My site is old and clunky — can it be modernised without a full rebuild?',
+        answer: 'In most cases yes — We can modernise an old-school site into a fast, modern web app while keeping what already works.'
+    },
 ];
 
 export default function WebsiteDevelopmentPage() {
