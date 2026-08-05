@@ -3,6 +3,7 @@ import H2 from '../components/typographyh2';
 import P from '../components/typographyp';
 import { Separator } from '../components/ui/separator';
 import CtaButtons from '../components/cta-buttons';
+import QuestionCard from '../components/question-card';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import SEO from '../components/seo';
 import { Bot, Lightbulb, Layers, UserPlus } from 'lucide-react';
@@ -14,6 +15,12 @@ const services = [
     { title: 'Hire a developer', description: 'Bring dedicated engineering expertise onto your team, on your timeline, without the overhead of a full-time hire.', icon: UserPlus },
 ];
 
+const faqs = [
+    { question: 'I already have AI-generated code — can you just fix it up?', answer: "Yes, that's exactly what 'production-ready' means here: hardening, testing, and securing AI-generated prototypes so they're safe to actually ship." },
+    { question: 'How do you price a prototype or MVP?', answer: 'I offer a free consultation to scope the work, then charge per product rather than an open-ended hourly rate, so you know the cost upfront.' },
+    { question: 'Is this a full-time hire or a one-off project?', answer: 'Either — I take on both one-off builds and ongoing dedicated engineering work, on your timeline, without the overhead of a full-time hire.' },
+];
+
 export default function SoftwareOnDemandPage() {
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
@@ -23,6 +30,7 @@ export default function SoftwareOnDemandPage() {
                 path="/software-on-demand"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Software-on-Demand', path: '/software-on-demand' }]}
                 service={{ name: 'Software-on-Demand', serviceType: 'Custom Software Development' }}
+                faqs={faqs}
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
@@ -64,6 +72,17 @@ export default function SoftwareOnDemandPage() {
             <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
                 <H2 className="animate-fadeInUp">Ready to build something great?</H2>
                 <CtaButtons />
+            </div>
+
+            <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
+
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 py-16 px-4">
+                <H2 className="animate-fadeInUp">Frequently Asked Questions</H2>
+                <div className="animate-fadeInUp flex flex-col gap-4 w-full">
+                    {faqs.map((faq) => (
+                        <QuestionCard key={faq.question} {...faq} />
+                    ))}
+                </div>
             </div>
 
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />

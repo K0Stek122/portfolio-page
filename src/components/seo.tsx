@@ -17,6 +17,11 @@ interface ServiceEntry {
     serviceType: string;
 }
 
+interface FAQEntry {
+    question: string;
+    answer: string;
+}
+
 interface SEOProps {
     title: string;
     description: string;
@@ -28,6 +33,8 @@ interface SEOProps {
     breadcrumbs?: BreadcrumbEntry[];
     /** Renders a Service JSON-LD block. Set on service-landing pages (spreadsheet-automation, software-on-demand, website-development). */
     service?: ServiceEntry;
+    /** Renders an FAQPage JSON-LD block. Mirror the visible FAQ <QuestionCard> list on the page. */
+    faqs?: FAQEntry[];
 }
 
 /** Guards against a stray "</script" inside JSON content from prematurely closing the tag. */
@@ -35,7 +42,7 @@ function toJsonLd(data: unknown): string {
     return JSON.stringify(data).replace(/</g, '\\u003c');
 }
 
-export default function SEO({ title, description, path, type = 'website', includePerson = false, breadcrumbs, service }: SEOProps) {
+export default function SEO({ title, description, path, type = 'website', includePerson = false, breadcrumbs, service, faqs }: SEOProps) {
     const url = `${SITE_URL}${path}`;
 
     const websiteLd = {
@@ -72,6 +79,19 @@ export default function SEO({ title, description, path, type = 'website', includ
         ],
     } : null;
 
+    const faqLd = faqs?.length ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+                '@type': 'Answer',
+                text: faq.answer,
+            },
+        })),
+    } : null;
+
     const breadcrumbLd = breadcrumbs?.length ? {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -106,6 +126,7 @@ export default function SEO({ title, description, path, type = 'website', includ
             {personLd && <script type="application/ld+json">{toJsonLd(personLd)}</script>}
             {breadcrumbLd && <script type="application/ld+json">{toJsonLd(breadcrumbLd)}</script>}
             {serviceLd && <script type="application/ld+json">{toJsonLd(serviceLd)}</script>}
+            {faqLd && <script type="application/ld+json">{toJsonLd(faqLd)}</script>}
         </>
     );
 }

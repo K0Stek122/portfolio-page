@@ -3,6 +3,7 @@ import H2 from '../components/typographyh2';
 import P from '../components/typographyp';
 import { Separator } from '../components/ui/separator';
 import CtaButtons from '../components/cta-buttons';
+import QuestionCard from '../components/question-card';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from '../components/ui/breadcrumb';
 import SEO from '../components/seo';
 import { Rocket, Figma, TrendingUp, Sparkles } from 'lucide-react';
@@ -14,6 +15,12 @@ const services = [
     { title: 'Modernise Your Site', description: 'Turn your old-school site into a fast, modern web app.', icon: Sparkles },
 ];
 
+const faqs = [
+    { question: 'Do you build from scratch or can you work from an existing design?', answer: 'Both — I can build a site from scratch at a competitive price, or bring your Figma files or wireframes to life exactly as designed.' },
+    { question: 'Can you improve the SEO of a site I already have?', answer: 'Yes — SEO optimisation for existing sites is one of the core services, aimed at improving your rankings on Google and Bing.' },
+    { question: 'My site is old and clunky — can it be modernised without a full rebuild?', answer: 'In most cases yes — I can modernise an old-school site into a fast, modern web app while keeping what already works.' },
+];
+
 export default function WebsiteDevelopmentPage() {
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
@@ -23,6 +30,7 @@ export default function WebsiteDevelopmentPage() {
                 path="/website-development"
                 breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Website Development', path: '/website-development' }]}
                 service={{ name: 'Website Development', serviceType: 'Website Design & Development' }}
+                faqs={faqs}
             />
 
             <div className="animate-fadeInUp w-full bg-gradient-to-b from-primary/10 via-primary/5 to-transparent">
@@ -64,6 +72,17 @@ export default function WebsiteDevelopmentPage() {
             <div className="animate-fadeInUp flex flex-col items-center gap-4 pb-20 text-center px-4">
                 <H2 className="animate-fadeInUp">Ready to launch your website?</H2>
                 <CtaButtons />
+            </div>
+
+            <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
+
+            <div className="animate-fadeInUp flex flex-col items-center gap-4 w-full max-w-5/6 md:max-w-1/2 py-16 px-4">
+                <H2 className="animate-fadeInUp">Frequently Asked Questions</H2>
+                <div className="animate-fadeInUp flex flex-col gap-4 w-full">
+                    {faqs.map((faq) => (
+                        <QuestionCard key={faq.question} {...faq} />
+                    ))}
+                </div>
             </div>
 
             <Separator className="animate-fadeInUp max-w-5/6 md:max-w-1/2" />
