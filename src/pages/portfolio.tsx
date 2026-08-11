@@ -19,6 +19,7 @@ import H1 from "../components/typographyh1";
 import H2 from "../components/typographyh2";
 import P from "../components/typographyp";
 import SEO from "../components/seo";
+import ProjectDialog from "../components/project-dialog";
 
 import cbImage from ".././assets/projects/cb_avif.avif";
 import ugImage from ".././assets/projects/ug_avif.avif"
@@ -32,13 +33,14 @@ interface Project {
     title: string;
     subtitle?: string;
     description: string;
+    longDescription: string;
     image?: string;
     icon?: LucideIcon;
-    link: string;
+    demoLink?: string;
+    githubLink?: string;
 }
 
-function ProjectCard({ title, subtitle, description, image, icon: Icon, link }: Project) {
-    const handleExternalLink = (url: string) => window.open(url, "_blank", "noopener,noreferrer");
+function ProjectCard({ title, subtitle, description, longDescription, image, icon: Icon, demoLink, githubLink }: Project) {
     return (
         <div className="animate-fadeInUp flex flex-col gap-2 bg-card text-card-foreground border border-border rounded-lg p-4">
             {image ? (
@@ -51,14 +53,7 @@ function ProjectCard({ title, subtitle, description, image, icon: Icon, link }: 
             <p className="font-bold line-clamp-1">{title}</p>
             {subtitle && <p className="font-bold text-sm text-white/75 line-clamp-1">{subtitle}</p>}
             <p className="text-muted-foreground text-sm line-clamp-3 flex-1">{description}</p>
-            <Button
-                size="sm"
-                variant="secondary"
-                className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer w-full"
-                onClick={() => handleExternalLink(link)}
-            >
-                Learn More
-            </Button>
+            <ProjectDialog title={title} image={image} longDescription={longDescription} demoLink={demoLink} githubLink={githubLink} />
         </div>
     );
 }
@@ -80,22 +75,25 @@ export default function PortfolioPage() {
             title: "Change Birmingham",
             subtitle: "Role: Database Engineer",
             description: "Engineered Postgresql Database + Full IT setup.",
+            longDescription: "Engineered a PostgreSQL database from the ground up and set up the organisation's full IT infrastructure, giving the therapy practice a reliable, well-structured system to run on day to day.",
             image: cbImage,
-            link: "https://changebrieftherapy.org",
+            demoLink: "https://changebrieftherapy.org",
         },
         {
             title: "We Job Box",
             subtitle: "Role: IT Support",
             description: "1st Line IT Support in the Microsoft ecosystem.",
+            longDescription: "Provided first-line IT support across the Microsoft ecosystem, keeping the team's day-to-day tooling running smoothly and resolving issues quickly to minimise downtime.",
             image: wjbImage,
-            link: "https://www.wejobbox.com",
+            demoLink: "https://www.wejobbox.com",
         },
         {
             title: "Cultures Entwined",
             subtitle: "Role: Data Automation",
             description: "Utilised Excel and UI/UX Principles to develop a custom solution.",
+            longDescription: "Combined Excel-based automation with UI/UX design principles to build a custom solution that replaced manual, error-prone processes with something the team could actually rely on.",
             image: culturesentwinedImage,
-            link: "https://culturesentwined.co.uk"
+            demoLink: "https://culturesentwined.co.uk"
         }
     ];
 
@@ -103,62 +101,72 @@ export default function PortfolioPage() {
         {
             title: "Pandas Contribution",
             description: "Triage'd and fixed bug reports in the pandas data analysis tool.",
+            longDescription: "Triaged incoming bug reports for the pandas data analysis library and shipped fixes, helping maintain the reliability of a tool used across the Python data ecosystem.",
             icon: GitPullRequest,
-            link: "https://pandas.pydata.org/",
+            demoLink: "https://pandas.pydata.org/",
         },
         {
             title: "AutoKey Contribution",
             description: "Fixed bug reports in the autokey automation tool.",
+            longDescription: "Diagnosed and fixed bug reports in the AutoKey desktop automation tool, contributing directly to an open source project used by its community for everyday automation.",
             icon: GitPullRequest,
-            link: "https://autokey.github.io/",
+            demoLink: "https://autokey.github.io/",
         },
         {
             title: "Raspberry PI Self-Hosting",
             description: "Server hosting with RPI using only FOSS and self-made software.",
+            longDescription: "Set up and self-hosted services on a Raspberry Pi using entirely free and open source software, including custom-built tooling, as a hands-on exercise in server administration.",
             icon: Server,
-            link: "https://www.kostek.uk",
+            demoLink: "https://www.kostek.uk",
         },
         {
             title: "Kindle Quote Extractor",
             description: "Engineered a Python tool for automating quote extraction. Allows for output to JSON and Markdown.",
+            longDescription: "Built a Python tool that automates extracting highlighted quotes from Kindle, with output to both JSON and Markdown so the results slot straight into other workflows.",
             icon: BookOpen,
-            link: "https://github.com/K0Stek122/kindle-extractor",
+            githubLink: "https://github.com/K0Stek122/kindle-extractor",
         },
         {
             title: "xdump: Hexdump utility tool",
             description: "Engineered a Pure-C tool for analysing raw binary data of any file.",
+            longDescription: "Wrote a pure C hexdump utility for inspecting the raw binary contents of any file, focused on being small, fast, and dependency-free.",
             icon: Binary,
-            link: "https://github.com/K0Stek122/xdump",
+            githubLink: "https://github.com/K0Stek122/xdump",
         },
         {
             title: "Conway's Game of Life",
             description: "Designed Conway's game of life in Pure-C. Utilises mathematics and computation theory to implement a Pushdown Automaton.",
+            longDescription: "Implemented Conway's Game of Life in pure C, applying computation theory by modelling the simulation as a pushdown automaton rather than a naive grid loop.",
             icon: Grid3x3,
-            link: "https://github.com/K0Stek122/c-conway-game-of-life",
+            githubLink: "https://github.com/K0Stek122/c-conway-game-of-life",
         },
         {
             title: "CastHud: C++ GUI overlay tool",
             description: "Designed a GUI overlay tool letting users design any user interface on top of another application.",
+            longDescription: "Designed a C++ GUI overlay tool that lets users lay out and render any custom interface on top of another running application.",
             icon: AppWindow,
-            link: "https://github.com/K0Stek122/CastHud",
+            githubLink: "https://github.com/K0Stek122/CastHud",
         },
         {
             title: "File Splitter and Unsplitter",
             description: "Engineered in pure C.",
+            longDescription: "A pure C command-line utility for splitting large files into chunks and reassembling them again, built as a low-level exercise in file I/O and buffer handling.",
             icon: Scissors,
-            link: "https://github.com/K0Stek122/c-file-splitter",
+            githubLink: "https://github.com/K0Stek122/c-file-splitter",
         },
         {
             title: "Hatch",
             description: "Wordlist generation for Cyber Security.",
+            longDescription: "A wordlist generation tool built for cyber security work, used to produce targeted wordlists for password auditing and related security testing.",
             icon: KeyRound,
-            link: "https://github.com/K0Stek122/hatch"
+            githubLink: "https://github.com/K0Stek122/hatch"
         },
         {
             title: "PyOverlay",
             description: "Tool for modifying any app's UI.",
+            longDescription: "A Python/Pygame-based tool for overlaying and modifying the UI of other applications, built as an exploration of real-time rendering on top of third-party windows.",
             icon: Layers,
-            link: "https://github.com/K0Stek122/Python-pygame-overlay"
+            githubLink: "https://github.com/K0Stek122/Python-pygame-overlay"
         }
     ];
 
@@ -167,22 +175,25 @@ export default function PortfolioPage() {
             title: "Unify Giving",
             subtitle: "Role: Software Engineer",
             description: "Engineered full-stack AI-Driven software.",
+            longDescription: "Worked as a full-stack software engineer building AI-driven features for Unify Giving, contributing across both the backend logic and the user-facing product.",
             image: ugImage,
-            link: "https://unifygiving.com/",
+            demoLink: "https://unifygiving.com/",
         },
         {
             title: "We Hold a Hand",
             subtitle: "Role: IT Team Lead",
             description: "Managing IT Support, Web Dev, and internal data automation.",
+            longDescription: "Led IT support, web development, and internal data automation as IT Team Lead, keeping the charity's technical operations running while improving how its internal processes worked.",
             image: whahImage,
-            link: "https://weholdahand.org/",
+            demoLink: "https://weholdahand.org/",
         },
         {
             title: "Unify Giving",
             subtitle: "Role: Book Shop Technician",
             description: "Technician at Oxfam Rugby's Local bookshop.",
+            longDescription: "Worked as a technician at Oxfam Rugby's local bookshop, supporting day-to-day retail operations for a charity-run store.",
             image: oxfamImage,
-            link: "https://www.oxfam.org.uk/",
+            demoLink: "https://www.oxfam.org.uk/",
         }
     ];
 
@@ -190,8 +201,9 @@ export default function PortfolioPage() {
         {
             title: "Bachelor's Dissertation",
             description: "Network Intrusion Detection System for Microservices with Novel Hybrid Finite Automata",
+            longDescription: "A bachelor's dissertation proposing a novel hybrid finite automata approach to network intrusion detection for microservice architectures, combining formal automata theory with practical detection performance.",
             image: bachelorDissertationImage,
-            link: "https://drive.google.com/file/d/1KM0cII-CPsCitqQ0H2YRtf5pCoDhdfa3/view?usp=sharing",
+            demoLink: "https://drive.google.com/file/d/1KM0cII-CPsCitqQ0H2YRtf5pCoDhdfa3/view?usp=sharing",
         }
     ];
 
