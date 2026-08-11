@@ -33,14 +33,16 @@ interface Project {
     title: string;
     subtitle?: string;
     description: string;
-    longDescription: string;
+    longDescription: string[];
     image?: string;
+    /** Image shown in the ProjectDialog only, when the card itself should keep showing its icon instead of a thumbnail. Falls back to `image` if unset. */
+    dialogImage?: string;
     icon?: LucideIcon;
     demoLink?: string;
     githubLink?: string;
 }
 
-function ProjectCard({ title, subtitle, description, longDescription, image, icon: Icon, demoLink, githubLink }: Project) {
+function ProjectCard({ title, subtitle, description, longDescription, image, dialogImage, icon: Icon, demoLink, githubLink }: Project) {
     return (
         <div className="animate-fadeInUp flex flex-col gap-2 bg-card text-card-foreground border border-border rounded-lg p-4">
             {image ? (
@@ -53,7 +55,7 @@ function ProjectCard({ title, subtitle, description, longDescription, image, ico
             <p className="font-bold line-clamp-1">{title}</p>
             {subtitle && <p className="font-bold text-sm text-white/75 line-clamp-1">{subtitle}</p>}
             <p className="text-muted-foreground text-sm line-clamp-3 flex-1">{description}</p>
-            <ProjectDialog title={title} image={image} longDescription={longDescription} demoLink={demoLink} githubLink={githubLink} />
+            <ProjectDialog title={title} image={dialogImage ?? image} icon={Icon} longDescription={longDescription} demoLink={demoLink} githubLink={githubLink} />
         </div>
     );
 }
@@ -75,7 +77,11 @@ export default function PortfolioPage() {
             title: "Change Birmingham",
             subtitle: "Role: Database Engineer",
             description: "Engineered Postgresql Database + Full IT setup.",
-            longDescription: "Engineered a PostgreSQL database from the ground up and set up the organisation's full IT infrastructure, giving the therapy practice a reliable, well-structured system to run on day to day.",
+            longDescription: [
+                "Engineered Change Birmingham's website from the ground up, utilising UI/UX principles.",
+                "Engineered Postgresql database from scratch. Engineered internal tools to access the SQL database.",
+                "Gave the therapy practice a reliable, well-structured system to run on day to day.",
+            ],
             image: cbImage,
             demoLink: "https://changebrieftherapy.org",
         },
@@ -83,7 +89,12 @@ export default function PortfolioPage() {
             title: "We Job Box",
             subtitle: "Role: IT Support",
             description: "1st Line IT Support in the Microsoft ecosystem.",
-            longDescription: "Provided first-line IT support across the Microsoft ecosystem, keeping the team's day-to-day tooling running smoothly and resolving issues quickly to minimise downtime.",
+            longDescription: [
+                "Provided first-line IT support across the Microsoft ecosystem.",
+                "Kept the team's day-to-day tooling running smoothly.",
+                "Resolved issues quickly to minimise downtime.",
+                "Performed on-call IT Support through unexpected scenarios and absences."
+            ],
             image: wjbImage,
             demoLink: "https://www.wejobbox.com",
         },
@@ -91,7 +102,11 @@ export default function PortfolioPage() {
             title: "Cultures Entwined",
             subtitle: "Role: Data Automation",
             description: "Utilised Excel and UI/UX Principles to develop a custom solution.",
-            longDescription: "Combined Excel-based automation with UI/UX design principles to build a custom solution that replaced manual, error-prone processes with something the team could actually rely on.",
+            longDescription: [
+                "Combined Excel-based automation with UI/UX design principles.",
+                "Built a custom solution that replaced manual, error-prone processes.",
+                "Delivered a tool that the team could rely on.",
+            ],
             image: culturesentwinedImage,
             demoLink: "https://culturesentwined.co.uk"
         }
@@ -101,70 +116,105 @@ export default function PortfolioPage() {
         {
             title: "Pandas Contribution",
             description: "Triage'd and fixed bug reports in the pandas data analysis tool.",
-            longDescription: "Triaged incoming bug reports for the pandas data analysis library and shipped fixes, helping maintain the reliability of a tool used across the Python data ecosystem.",
+            longDescription: [
+                "Triage'd incoming bug reports for the pandas data analysis library.",
+                "Shipped fixes to resolve reported issues.",
+                "Helped maintain up-to-date documentation.",
+            ],
             icon: GitPullRequest,
             demoLink: "https://pandas.pydata.org/",
+            githubLink: "https://github.com/pandas-dev/pandas"
         },
         {
             title: "AutoKey Contribution",
             description: "Fixed bug reports in the autokey automation tool.",
-            longDescription: "Diagnosed and fixed bug reports in the AutoKey desktop automation tool, contributing directly to an open source project used by its community for everyday automation.",
+            longDescription: [
+                "Diagnosed and fixed bug reports in the AutoKey desktop automation tool.",
+                "Contributed directly to an open source project used by its community for everyday automation.",
+            ],
             icon: GitPullRequest,
             demoLink: "https://autokey.github.io/",
         },
         {
             title: "Raspberry PI Self-Hosting",
             description: "Server hosting with RPI using only FOSS and self-made software.",
-            longDescription: "Set up and self-hosted services on a Raspberry Pi using entirely free and open source software, including custom-built tooling, as a hands-on exercise in server administration.",
+            longDescription: [
+                "Set up and self-hosted services on a Raspberry Pi.",
+                "Used entirely free and open source software, including custom-built tooling.",
+                "A hands-on exercise in server administration.",
+            ],
             icon: Server,
             demoLink: "https://www.kostek.uk",
         },
         {
             title: "Kindle Quote Extractor",
             description: "Engineered a Python tool for automating quote extraction. Allows for output to JSON and Markdown.",
-            longDescription: "Built a Python tool that automates extracting highlighted quotes from Kindle, with output to both JSON and Markdown so the results slot straight into other workflows.",
+            longDescription: [
+                "Built a Python tool that automates extracting highlighted quotes from Kindle.",
+                "Supports output to both JSON and Markdown.",
+                "Results slot straight into other workflows.",
+            ],
             icon: BookOpen,
             githubLink: "https://github.com/K0Stek122/kindle-extractor",
         },
         {
             title: "xdump: Hexdump utility tool",
             description: "Engineered a Pure-C tool for analysing raw binary data of any file.",
-            longDescription: "Wrote a pure C hexdump utility for inspecting the raw binary contents of any file, focused on being small, fast, and dependency-free.",
+            longDescription: [
+                "Wrote a pure C hexdump utility for inspecting the raw binary contents of any file.",
+                "Focused on being small, fast, and dependency-free.",
+            ],
             icon: Binary,
             githubLink: "https://github.com/K0Stek122/xdump",
         },
         {
             title: "Conway's Game of Life",
             description: "Designed Conway's game of life in Pure-C. Utilises mathematics and computation theory to implement a Pushdown Automaton.",
-            longDescription: "Implemented Conway's Game of Life in pure C, applying computation theory by modelling the simulation as a pushdown automaton rather than a naive grid loop.",
+            longDescription: [
+                "Implemented Conway's Game of Life in pure C.",
+                "Applied computation theory by modelling the simulation as a pushdown automaton rather than a naive grid loop.",
+            ],
             icon: Grid3x3,
             githubLink: "https://github.com/K0Stek122/c-conway-game-of-life",
         },
         {
             title: "CastHud: C++ GUI overlay tool",
             description: "Designed a GUI overlay tool letting users design any user interface on top of another application.",
-            longDescription: "Designed a C++ GUI overlay tool that lets users lay out and render any custom interface on top of another running application.",
+            longDescription: [
+                "Designed a C++ GUI overlay tool.",
+                "Lets users lay out and render any custom interface on top of another running application.",
+            ],
             icon: AppWindow,
             githubLink: "https://github.com/K0Stek122/CastHud",
         },
         {
             title: "File Splitter and Unsplitter",
             description: "Engineered in pure C.",
-            longDescription: "A pure C command-line utility for splitting large files into chunks and reassembling them again, built as a low-level exercise in file I/O and buffer handling.",
+            longDescription: [
+                "A pure C command-line utility for splitting large files into chunks.",
+                "Reassembles split files back into the original.",
+                "Built as a low-level exercise in file I/O and buffer handling.",
+            ],
             icon: Scissors,
             githubLink: "https://github.com/K0Stek122/c-file-splitter",
         },
         {
             title: "Hatch",
             description: "Wordlist generation for Cyber Security.",
-            longDescription: "A wordlist generation tool built for cyber security work, used to produce targeted wordlists for password auditing and related security testing.",
+            longDescription: [
+                "A wordlist generation tool built for cyber security work.",
+                "Used to produce targeted wordlists for password auditing and related security testing.",
+            ],
             icon: KeyRound,
             githubLink: "https://github.com/K0Stek122/hatch"
         },
         {
             title: "PyOverlay",
             description: "Tool for modifying any app's UI.",
-            longDescription: "A Python/Pygame-based tool for overlaying and modifying the UI of other applications, built as an exploration of real-time rendering on top of third-party windows.",
+            longDescription: [
+                "A Python/Pygame-based tool for overlaying and modifying the UI of other applications.",
+                "Built as an exploration of real-time rendering on top of third-party windows.",
+            ],
             icon: Layers,
             githubLink: "https://github.com/K0Stek122/Python-pygame-overlay"
         }
@@ -175,7 +225,10 @@ export default function PortfolioPage() {
             title: "Unify Giving",
             subtitle: "Role: Software Engineer",
             description: "Engineered full-stack AI-Driven software.",
-            longDescription: "Worked as a full-stack software engineer building AI-driven features for Unify Giving, contributing across both the backend logic and the user-facing product.",
+            longDescription: [
+                "Worked as a full-stack software engineer building AI-driven features for Unify Giving.",
+                "Contributed across both the backend logic and the user-facing product.",
+            ],
             image: ugImage,
             demoLink: "https://unifygiving.com/",
         },
@@ -183,7 +236,11 @@ export default function PortfolioPage() {
             title: "We Hold a Hand",
             subtitle: "Role: IT Team Lead",
             description: "Managing IT Support, Web Dev, and internal data automation.",
-            longDescription: "Led IT support, web development, and internal data automation as IT Team Lead, keeping the charity's technical operations running while improving how its internal processes worked.",
+            longDescription: [
+                "Led IT support, web development, and internal data automation as IT Team Lead.",
+                "Kept the charity's technical operations running.",
+                "Improved how its internal processes worked.",
+            ],
             image: whahImage,
             demoLink: "https://weholdahand.org/",
         },
@@ -191,7 +248,10 @@ export default function PortfolioPage() {
             title: "Unify Giving",
             subtitle: "Role: Book Shop Technician",
             description: "Technician at Oxfam Rugby's Local bookshop.",
-            longDescription: "Worked as a technician at Oxfam Rugby's local bookshop, supporting day-to-day retail operations for a charity-run store.",
+            longDescription: [
+                "Worked as a technician at Oxfam Rugby's local bookshop.",
+                "Supported day-to-day retail operations for a charity-run store.",
+            ],
             image: oxfamImage,
             demoLink: "https://www.oxfam.org.uk/",
         }
@@ -201,7 +261,10 @@ export default function PortfolioPage() {
         {
             title: "Bachelor's Dissertation",
             description: "Network Intrusion Detection System for Microservices with Novel Hybrid Finite Automata",
-            longDescription: "A bachelor's dissertation proposing a novel hybrid finite automata approach to network intrusion detection for microservice architectures, combining formal automata theory with practical detection performance.",
+            longDescription: [
+                "A bachelor's dissertation proposing a novel hybrid finite automata approach to network intrusion detection for microservice architectures.",
+                "Combined formal automata theory with practical detection performance.",
+            ],
             image: bachelorDissertationImage,
             demoLink: "https://drive.google.com/file/d/1KM0cII-CPsCitqQ0H2YRtf5pCoDhdfa3/view?usp=sharing",
         }
