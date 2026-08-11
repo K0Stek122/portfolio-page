@@ -13,6 +13,7 @@ import {
     Scissors,
     KeyRound,
     Layers,
+    SquareTerminal,
     type LucideIcon,
 } from "lucide-react";
 import H1 from "../components/typographyh1";
@@ -28,6 +29,16 @@ import whahImage from ".././assets/projects/whah_avif.avif"
 import oxfamImage from ".././assets/projects/oxfam_avif.avif"
 import culturesentwinedImage from ".././assets/projects/culturesentwined_avif.avif"
 import bachelorDissertationImage from ".././assets/projects/dissertation_avif.avif"
+import pandasImage from ".././assets/projects/pandas_avif.avif"
+import autokeyImage from ".././assets/projects/autokey_avif.avif"
+import rpiImage from ".././assets/projects/rpi_avif.avif"
+import kindleExtractorImage from ".././assets/projects/kindle-extractor_avif.avif"
+import xdumpImage from ".././assets/projects/xdump_avif.avif"
+import conwayImage from ".././assets/projects/c-conway-game-of-life.gif"
+import castHudImage from ".././assets/projects/casthud.gif"
+import fileSplitterImage from ".././assets/projects/filesplitter_avif.avif"
+import wordlistImage from ".././assets/projects/wordlist_avif.avif"
+import pygameOverlayImage from ".././assets/projects/pygameoverlay_avif.avif"
 
 interface Project {
     title: string;
@@ -122,6 +133,7 @@ export default function PortfolioPage() {
                 "Helped maintain up-to-date documentation.",
             ],
             icon: GitPullRequest,
+            dialogImage: pandasImage,
             demoLink: "https://pandas.pydata.org/",
             githubLink: "https://github.com/pandas-dev/pandas"
         },
@@ -133,6 +145,7 @@ export default function PortfolioPage() {
                 "Contributed directly to an open source project used by its community for everyday automation.",
             ],
             icon: GitPullRequest,
+            dialogImage: autokeyImage,
             demoLink: "https://autokey.github.io/",
         },
         {
@@ -144,6 +157,7 @@ export default function PortfolioPage() {
                 "A hands-on exercise in server administration.",
             ],
             icon: Server,
+            dialogImage: rpiImage,
             demoLink: "https://www.kostek.uk",
         },
         {
@@ -155,6 +169,7 @@ export default function PortfolioPage() {
                 "Results slot straight into other workflows.",
             ],
             icon: BookOpen,
+            dialogImage: kindleExtractorImage,
             githubLink: "https://github.com/K0Stek122/kindle-extractor",
         },
         {
@@ -165,6 +180,7 @@ export default function PortfolioPage() {
                 "Focused on being small, fast, and dependency-free.",
             ],
             icon: Binary,
+            dialogImage: xdumpImage,
             githubLink: "https://github.com/K0Stek122/xdump",
         },
         {
@@ -175,6 +191,7 @@ export default function PortfolioPage() {
                 "Applied computation theory by modelling the simulation as a pushdown automaton rather than a naive grid loop.",
             ],
             icon: Grid3x3,
+            dialogImage: conwayImage,
             githubLink: "https://github.com/K0Stek122/c-conway-game-of-life",
         },
         {
@@ -185,6 +202,7 @@ export default function PortfolioPage() {
                 "Lets users lay out and render any custom interface on top of another running application.",
             ],
             icon: AppWindow,
+            dialogImage: castHudImage,
             githubLink: "https://github.com/K0Stek122/CastHud",
         },
         {
@@ -196,6 +214,7 @@ export default function PortfolioPage() {
                 "Built as a low-level exercise in file I/O and buffer handling.",
             ],
             icon: Scissors,
+            dialogImage: fileSplitterImage,
             githubLink: "https://github.com/K0Stek122/c-file-splitter",
         },
         {
@@ -206,6 +225,7 @@ export default function PortfolioPage() {
                 "Used to produce targeted wordlists for password auditing and related security testing.",
             ],
             icon: KeyRound,
+            dialogImage: wordlistImage,
             githubLink: "https://github.com/K0Stek122/hatch"
         },
         {
@@ -216,6 +236,7 @@ export default function PortfolioPage() {
                 "Built as an exploration of real-time rendering on top of third-party windows.",
             ],
             icon: Layers,
+            dialogImage: pygameOverlayImage,
             githubLink: "https://github.com/K0Stek122/Python-pygame-overlay"
         }
     ];
@@ -327,14 +348,25 @@ export default function PortfolioPage() {
 
             <div className="animate-fadeInUp flex flex-col items-center gap-2 pb-8">
                 <P>For a full range of my projects, have a look at my GitHub:</P>
-                <Button
-                    variant="secondary"
-                    className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
-                    onClick={() => window.open("https://github.com/K0Stek122", "_blank", "noopener,noreferrer")}
-                >
-                    <CodeIcon data-icon="inline-start" aria-hidden={false} />
-                    GitHub
-                </Button>
+                <div className="animate-fadeInUp flex flex-row items-center gap-2 pb-8">
+                    <Button
+                        variant="secondary"
+                        className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
+                        onClick={() => window.open("https://github.com/K0Stek122", "_blank", "noopener,noreferrer")}
+                    >
+                        <CodeIcon data-icon="inline-start" aria-hidden={false} />
+                        GitHub
+                    </Button>
+
+                    <Button
+                        variant="secondary"
+                        className="transition-transform duration-200 hover:scale-105 hover:cursor-pointer"
+                        onClick={() => window.open("https://leetcode.com/u/Kostek122/", "_blank", "noopener,noreferrer")}
+                    >
+                        <SquareTerminal data-icon="inline-start" aria-hidden={false} />
+                        LeetCode
+                    </Button>
+                </div>
             </div>
 
         </div>

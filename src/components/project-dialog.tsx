@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { GraduationCap, type LucideIcon } from 'lucide-react';
+import { GraduationCap, Github, Link, type LucideIcon } from 'lucide-react';
 import { Button } from './ui/button';
 import {
     Dialog,
@@ -64,8 +64,18 @@ export default function ProjectDialog({ title, image, icon: Icon, longDescriptio
                 </div>
                 {(demoLink || githubLink) && (
                     <DialogFooter className="sm:justify-center">
-                        {demoLink && <DialogLinkButton href={demoLink}>See this in action</DialogLinkButton>}
-                        {githubLink && <DialogLinkButton href={githubLink}>View GitHub</DialogLinkButton>}
+                        {demoLink && (
+                            <DialogLinkButton href={demoLink}>
+                                <Link data-icon="inline-start" aria-hidden={true} />
+                                See this in action
+                            </DialogLinkButton>
+                        )}
+                        {githubLink && (
+                            <DialogLinkButton href={githubLink}>
+                                <Github data-icon="inline-start" aria-hidden={true} />
+                                View GitHub
+                            </DialogLinkButton>
+                        )}
                     </DialogFooter>
                 )}
             </DialogContent>
