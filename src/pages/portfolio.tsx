@@ -32,7 +32,7 @@ import bachelorDissertationImage from ".././assets/projects/dissertation_avif.av
 import pandasImage from ".././assets/projects/pandas_avif.avif"
 import autokeyImage from ".././assets/projects/autokey_avif.avif"
 import rpiImage from ".././assets/projects/rpi_avif.avif"
-import kindleExtractorImage from ".././assets/projects/kindle-extractor_avif.avif"
+import kindleExtractorImage from ".././assets/projects/kindle_extractor_avif.avif"
 import xdumpImage from ".././assets/projects/xdump_avif.avif"
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif"
 import castHudImage from ".././assets/projects/casthud.gif"
@@ -162,7 +162,7 @@ export default function PortfolioPage() {
         },
         {
             title: "Kindle Quote Extractor",
-            description: "Engineered a Python tool for automating quote extraction. Allows for output to JSON and Markdown.",
+            description: "Engineered a Python tool that later became a Rust UI app for automating quote extraction. Allows for output to JSON and Markdown.",
             longDescription: [
                 "Built a Python tool that automates extracting highlighted quotes from Kindle.",
                 "Supports output to both JSON and Markdown.",
