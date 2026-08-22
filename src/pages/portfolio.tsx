@@ -32,7 +32,7 @@ import bachelorDissertationImage from ".././assets/projects/dissertation_avif.av
 import pandasImage from ".././assets/projects/pandas_avif.avif"
 import autokeyImage from ".././assets/projects/autokey_avif.avif"
 import rpiImage from ".././assets/projects/rpi_avif.avif"
-import kindleExtractorImage from ".././assets/projects/kindle_extractor_avif.avif"
+import kindleExtractorImage from ".././assets/kindle_extractor_avif.avif"
 import xdumpImage from ".././assets/projects/xdump_avif.avif"
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif"
 import castHudImage from ".././assets/projects/casthud.gif"
