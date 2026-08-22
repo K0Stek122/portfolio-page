@@ -29,6 +29,7 @@ const blogs: BlogEntry[] = [
     {
         title: 'Math Whizz',
         description: 'Get perplexed and excited by mathematics and analysis.',
+        url: "https://kostek.uk/math-whizz/",
     },
     {
         title: 'fp-enthusiast',
