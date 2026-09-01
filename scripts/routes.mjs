@@ -1,7 +1,7 @@
 export const STATIC_ROUTES = [
     { path: '/', file: 'src/pages/employers.tsx' },
     { path: '/employers/portfolio', file: 'src/pages/portfolio.tsx' },
-    { path: '/spreadsheet-automation', file: 'src/pages/spreadsheet-automation.tsx' },
+    { path: '/spreadsheet-alternative', file: 'src/pages/spreadsheet-alternative.tsx' },
     { path: '/software-on-demand', file: 'src/pages/software-on-demand.tsx' },
     { path: '/website-development', file: 'src/pages/website-development.tsx' },
 ];

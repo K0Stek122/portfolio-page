@@ -31,7 +31,7 @@ interface SEOProps {
     includePerson?: boolean;
     /** Mirrors the visible <Breadcrumb> trail on the page, in order, starting with Home. */
     breadcrumbs?: BreadcrumbEntry[];
-    /** Renders a Service JSON-LD block. Set on service-landing pages (spreadsheet-automation, software-on-demand, website-development). */
+    /** Renders a Service JSON-LD block. Set on service-landing pages (spreadsheet-alternative, software-on-demand, website-development). */
     service?: ServiceEntry;
     /** Renders an FAQPage JSON-LD block. Mirror the visible FAQ <QuestionCard> list on the page. */
     faqs?: FAQEntry[];

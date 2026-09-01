@@ -115,7 +115,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <P>Services: </P>
 
                 <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
-                    <Button asChild><Link to="/spreadsheet-automation">Spreadsheet Automation</Link></Button>
+                    <Button asChild><Link to="/spreadsheet-alternative">Spreadsheet Alternative</Link></Button>
                     <Button asChild><Link to="/software-on-demand">Software-on-Demand</Link></Button>
                     <Button asChild><Link to="/website-development">Website Development</Link></Button>
                 </div>

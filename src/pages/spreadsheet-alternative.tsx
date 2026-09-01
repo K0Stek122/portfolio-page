@@ -30,15 +30,15 @@ const faqs = [
     },
 ];
 
-export default function SpreadsheetAutomationPage() {
+export default function SpreadsheetAlternativePage() {
     return (
         <div className="flex flex-col overflow-x-hidden overflow-y-auto items-center h-dvh w-full bg-background">
             <SEO
-                title="Spreadsheet Automation — Kamil Kostrzewa"
-                description="Spreadsheet automation for hire. Eliminate repetitive admin work with expert spreadsheet automation and database engineering."
-                path="/spreadsheet-automation"
-                breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Spreadsheet Automation', path: '/spreadsheet-automation' }]}
-                service={{ name: 'Spreadsheet Automation', serviceType: 'Spreadsheet Automation & Database Engineering' }}
+                title="Spreadsheet Alternative — Kamil Kostrzewa"
+                description="Looking for a spreadsheet alternative? Eliminate repetitive admin work with expert automation and database engineering."
+                path="/spreadsheet-alternative"
+                breadcrumbs={[{ name: 'Home', path: '/' }, { name: 'Spreadsheet Alternative', path: '/spreadsheet-alternative' }]}
+                service={{ name: 'Spreadsheet Alternative', serviceType: 'Spreadsheet Alternative & Database Engineering' }}
                 faqs={faqs}
             />
 
@@ -50,7 +50,7 @@ export default function SpreadsheetAutomationPage() {
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbLink className="hover:text-foreground" href="/spreadsheet-automation">Spreadsheet Automation</BreadcrumbLink>
+                            <BreadcrumbLink className="hover:text-foreground" href="/spreadsheet-alternative">Spreadsheet Alternative</BreadcrumbLink>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
