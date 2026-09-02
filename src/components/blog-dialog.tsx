@@ -38,7 +38,7 @@ const blogs: BlogEntry[] = [
     {
         title: 'The Mind Palace',
         description: 'Personal mind dump blog for half-finished thoughts and ideas.',
-        url: 'https://kostek.uk/the-mind-palace/',
+        url: 'https://kostek.uk/mind-palace',
     },
 ];
 
