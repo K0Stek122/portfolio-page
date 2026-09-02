@@ -35,6 +35,11 @@ const blogs: BlogEntry[] = [
         title: 'fp-enthusiast',
         description: 'Fountain pens and notebooks — the art of stationery.',
     },
+    {
+        title: 'The Mind Palace',
+        description: 'Personal mind dump blog for half-finished thoughts and ideas.',
+        url: 'https://kostek.uk/the-mind-palace/',
+    },
 ];
 
 export default function BlogDialog() {
@@ -58,7 +63,7 @@ export default function BlogDialog() {
                                     <Button
                                         size="sm"
                                         variant="secondary"
-                                        className="shrink-0 w-32"
+                                        className="shrink-0 w-36"
                                         onClick={() => window.open(blog.url, '_blank', 'noopener,noreferrer')}
                                     >
                                         {blog.title}
@@ -66,7 +71,7 @@ export default function BlogDialog() {
                                 ) : (
                                     <Tooltip>
                                         <TooltipTrigger asChild>
-                                            <span className="shrink-0 w-32 cursor-not-allowed">
+                                            <span className="shrink-0 w-36 cursor-not-allowed">
                                                 <Button size="sm" variant="secondary" disabled className="w-full">
                                                     {blog.title}
                                                 </Button>
