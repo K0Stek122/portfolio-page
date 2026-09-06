@@ -12,6 +12,8 @@ const STORAGE_KEY = 'theme';
 const ThemeContext = createContext<ThemeContextValue | undefined>(undefined);
 
 function getInitialTheme(): Theme {
+    // `window`/`localStorage` don't exist during SSR prerendering — default to 'dark' there,
+    // matching index.html's inline script so first-time visitors see no flash of the wrong theme.
     if (typeof window === 'undefined') return 'dark';
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored === 'light' ? 'light' : 'dark';

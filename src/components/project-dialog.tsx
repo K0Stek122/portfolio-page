@@ -51,6 +51,8 @@ export default function ProjectDialog({ title, image, icon: Icon, longDescriptio
                         <img src={image} alt={title} className="w-full h-[19.2rem] object-cover rounded-md" />
                     </div>
                 ) : !Icon && (
+                    // Only shown when the project has neither an image nor its own icon —
+                    // the icon case already gets its small badge next to the title above.
                     <div className="shrink-0 w-4/5 mx-auto h-[19.2rem] flex items-center justify-center rounded-md bg-primary/10 text-primary">
                         <GraduationCap className="size-16" />
                     </div>
@@ -62,6 +64,7 @@ export default function ProjectDialog({ title, image, icon: Icon, longDescriptio
                         ))}
                     </ul>
                 </div>
+                {/* Each link button is independently optional (OR-gate style) — no disabled/greyed-out buttons. */}
                 {(demoLink || githubLink) && (
                     <DialogFooter className="sm:justify-center">
                         {demoLink && (

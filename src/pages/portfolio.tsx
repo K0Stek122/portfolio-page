@@ -14,6 +14,7 @@ import {
     KeyRound,
     Layers,
     SquareTerminal,
+    PenTool,
     type LucideIcon,
 } from "lucide-react";
 import H1 from "../components/typographyh1";
@@ -32,8 +33,9 @@ import bachelorDissertationImage from ".././assets/projects/dissertation_avif.av
 import pandasImage from ".././assets/projects/pandas_avif.avif"
 import autokeyImage from ".././assets/projects/autokey_avif.avif"
 import rpiImage from ".././assets/projects/rpi_avif.avif"
-import kindleExtractorImage from ".././assets/kindle_extractor_avif.avif"
+import kindleExtractorImage from ".././assets/projects/kindle_extractor_rs_showcase_avif.avif"
 import xdumpImage from ".././assets/projects/xdump_avif.avif"
+import httImage from ".././assets/projects/htt_canvas_avif.avif"
 import conwayImage from ".././assets/projects/c-conway-game-of-life.gif"
 import castHudImage from ".././assets/projects/casthud.gif"
 import fileSplitterImage from ".././assets/projects/filesplitter_avif.avif"
@@ -162,15 +164,27 @@ export default function PortfolioPage() {
         },
         {
             title: "Kindle Quote Extractor",
-            description: "Engineered a Python tool that later became a Rust UI app for automating quote extraction. Allows for output to JSON and Markdown.",
+            description: "A desktop app that turns your Kindle's highlighted quotes into a tidy, browsable library.",
             longDescription: [
-                "Built a Python tool that automates extracting highlighted quotes from Kindle.",
-                "Supports output to both JSON and Markdown.",
-                "Results slot straight into other workflows.",
+                "Reads the highlights file your Kindle already keeps and organises every quote by book.",
+                "Lets you browse your quotes, copy any of them, and export a book (or your whole library) to a clean Markdown file.",
+                "Started life as a Python script and has since grown into a full desktop app, built in Rust for speed and reliability.",
             ],
             icon: BookOpen,
             dialogImage: kindleExtractorImage,
-            githubLink: "https://github.com/K0Stek122/kindle-extractor",
+            githubLink: "https://github.com/K0Stek122/kindle-extractor-rs",
+        },
+        {
+            title: "HTT: Handwriting to Text",
+            description: "Draw words on screen and turn your handwriting into text you can paste anywhere.",
+            longDescription: [
+                "An always-on-top canvas that sits at the top of the screen, ready whenever you want to jot something down by hand.",
+                "Recognises handwriting in the background using Google's Cloud Vision API, so you can keep writing while earlier words are being read.",
+                "One click copies everything you've written to the clipboard, ready to paste into any app.",
+            ],
+            icon: PenTool,
+            dialogImage: httImage,
+            githubLink: "https://github.com/K0Stek122/htt",
         },
         {
             title: "xdump: Hexdump utility tool",

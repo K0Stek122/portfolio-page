@@ -12,6 +12,7 @@ import { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider } from './ui/t
 interface BlogEntry {
     title: string;
     description: string;
+    /** Omit while the blog isn't live yet — renders a disabled "Coming soon!" entry instead of a link. */
     url?: string;
 }
 
@@ -69,6 +70,8 @@ export default function BlogDialog() {
                                         {blog.title}
                                     </Button>
                                 ) : (
+                                    // Native disabled buttons don't reliably fire the hover events
+                                    // TooltipTrigger needs, so wrap it in a span and trigger on that instead.
                                     <Tooltip>
                                         <TooltipTrigger asChild>
                                             <span className="shrink-0 w-36 cursor-not-allowed">
