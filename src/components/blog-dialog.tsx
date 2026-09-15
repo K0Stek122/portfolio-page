@@ -35,6 +35,7 @@ const blogs: BlogEntry[] = [
     {
         title: 'fp-enthusiast',
         description: 'Fountain pens and notebooks — the art of stationery.',
+        url: "https://kostek.uk/fp-enthusiast",
     },
     {
         title: 'The Mind Palace',

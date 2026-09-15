@@ -1,6 +1,7 @@
 import React from 'react';
 import H1 from '../components/typographyh1';
 import H2 from '../components/typographyh2';
+import UL from '../components/typographyul'
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
 import { FileUser, Globe, Code } from 'lucide-react';
@@ -102,22 +103,30 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                     I focus on clear communication so that your systems are faster, easier to maintain, and easier to scale. You can view selected projects on GitHub.
                 </P>
 
-                <H2>Freelance & Contract Work</H2>
-                <P>
-                    I work with small and medium-sized businesses that need an extra pair of hands.
-                    I focus on practical solutions that save time and make day-to-day work easier.
-                </P>
+                <H2>Freelance - Spreadsheet Alternative</H2>
+                <UL>
+                  <li>
+                    I work with startups, small businesses, and charities, and I handle their beaurocracy.
+                  </li>
+                  <li>
+                    You send me all documents and client information that you collect, and I design and engineer a database solution that automates away data entry, data analysis, and data retrieval.
+                  </li>
+                  <li>
+                    You never again have to dig through spreadsheets, word files, and messy SQL databases.
+                  </li>
+                  <li>
+                    If you are happy with my work, you may then hire me for IT services on a monthly subscription where I provide IT Support and IT Infrastructure Management.
+                  </li>
+                </UL>
 
                 <P>
                     I offer free consultations and I charge per product.
                 </P>
-
-                <P>Services: </P>
-
+                <P>
+                  There's a 10% upfront payment fee and the fee is decided beforehand.
+                </P>
                 <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
                     <Button asChild className="w-48"><Link to="/spreadsheet-alternative">Spreadsheet Alternative</Link></Button>
-                    <Button asChild className="w-48"><Link to="/software-on-demand">Software-on-Demand</Link></Button>
-                    <Button asChild className="w-48"><Link to="/website-development">Website Development</Link></Button>
                 </div>
             </div>
         </div>
