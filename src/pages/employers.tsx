@@ -4,7 +4,7 @@ import H2 from '../components/typographyh2';
 import UL from '../components/typographyul'
 import { Button } from '../components/ui/button';
 import { Separator } from '../components/ui/separator';
-import { FileUser, Globe, Code } from 'lucide-react';
+import { FileUser, Globe, Code, Sigma, SquareTerminal } from 'lucide-react';
 import LinImage from '../assets/LinkedIn_avif.avif'
 import ContactDialog from '../components/contact-dialog';
 import BlogDialog from '../components/blog-dialog';
@@ -128,6 +128,42 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <div className="animate-fadeInUp flex flex-row flex-wrap md:flex-col justify-center items-center gap-4 w-full max-w-full h-full">
                     <Button asChild className="w-48"><Link to="/spreadsheet-alternative">Spreadsheet Alternative</Link></Button>
                 </div>
+
+                <P></P> {/* Please don't hate me for this. */}
+
+                <H2>Tutoring</H2>
+                <UL>
+                    <li>
+                      I offer tutoring for GCSE, A-Level, and University Students in Mathematics & Computer Science
+                    </li>
+                    <li>
+                      In Computer Science I offer GCSE, A-Level, Bachelor's, as well as programming and computational thinking mentoring.
+                    </li>
+                    <li>
+                      In Mathematics I offer GCSE and A-Level tutoring. Mathematically-aligned subjects like BTEC Mathematical sciences and A-Level Statistics are also accepted.
+                    </li>
+                </UL>
+
+                <div className="animate-fadeInUp flex flex-row flex-wrap justify-center items-center gap-[1.1rem] w-full max-w-full h-full">
+                    <Button
+                        variant="default"
+                        size="default"
+                        className="w-52"
+                        onClick={() => handleExternalLink("https://mathtutornottingham.com")}>
+                            <Sigma data-icon="inline-start" />
+                            Maths Tutor
+                    </Button>
+
+                    <Button
+                        variant="default"
+                        size="default"
+                        className="w-52"
+                        onClick={() => handleExternalLink("https://computersciencetutornottingham.com")}>
+                            <SquareTerminal data-icon="inline-start" />
+                            Computer Science Tutor
+                    </Button>
+                </div>
+
             </div>
         </div>
     );
