@@ -106,7 +106,7 @@ const EmployersPage: React.FC<EmployersPageProps> = () => {
                 <H2>Freelance - Spreadsheet Alternative</H2>
                 <UL>
                   <li>
-                    I work with startups, small businesses, and charities, and I handle their beaurocracy.
+                    I work with startups, small businesses, and charities, and I handle their bureaucracy.
                   </li>
                   <li>
                     You send me all documents and client information that you collect, and I design and engineer a database solution that automates away data entry, data analysis, and data retrieval.
